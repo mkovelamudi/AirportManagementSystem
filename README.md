@@ -1,4 +1,10 @@
-# team-project-team-mavericks
-team-project-team-mavericks created by GitHub Classroom
+# Team-Mavericks
 
-Airport Management System
+
+## Airport Management System
+
+## Team Details
+* Ananya Mandava
+* Anurag Gajam
+* Manish Kovelamudi
+* Vamshidhar Reddy Parupally - 016001427
