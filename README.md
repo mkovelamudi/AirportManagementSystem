@@ -25,6 +25,8 @@ Saturdays
 * Communication
 * Simplicity
 
+### Architecture Diagram
+![image](https://user-images.githubusercontent.com/42996478/190816252-3d9c4f52-00af-4425-addd-cdb10add19bd.png)
 
 ### UI WireFrames [Link](Documentation/Wireframes/)
 * Login for employees
