@@ -1,14 +1,14 @@
 # Team-Mavericks
 
 
-## Airport Management System
-### Team Details
+# Airport Management System
+## Team Details
 * Ananya Mandava - 016315481
 * Anurag Gajam
 * Manish Kovelamudi
 * Vamshidhar Reddy Parupally - 016001427
 
-### Tools:
+## Tools:
 * Frontend: React JS
 * Backend: Node JS
 * Database: MongoDB
@@ -16,19 +16,19 @@
 * REST API: Postman (for testing developed APIs)
 * Cloud: Amazon Web Services (AWS) EC2 Cluster
 
-### Schedule for Scrum Meetings:
+## Schedule for Scrum Meetings:
 Saturdays
 
-### Project Board
+## Project Board
 [Available here](https://github.com/orgs/gopinathsjsu/projects/29/views/3)
-### XP Core Values:
+## XP Core Values:
 * Communication
 * Simplicity
 
-### Architecture Diagram
+## Architecture Diagram
 ![image](https://user-images.githubusercontent.com/42996478/190816252-3d9c4f52-00af-4425-addd-cdb10add19bd.png)
 
-### UI WireFrames [Link](Documentation/Wireframes/)
+## UI WireFrames [Link](Documentation/Wireframes/)
 * Login for employees
 <img src="https://github.com/gopinathsjsu/team-project-team-mavericks/blob/main/Documentation/Wireframes/employeeLoginPage.png" width="600">
 * Airline Employee dashboard
