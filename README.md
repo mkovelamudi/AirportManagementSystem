@@ -30,12 +30,16 @@ Saturdays
 
 ## UI WireFrames [Link](Documentation/Wireframes/)
 * Homescreen for User
-![untitled_page](https://user-images.githubusercontent.com/42718918/190879844-04096f3d-f76d-4219-b46c-bbd4323a326b.png)
+<img width="668" alt="Screen Shot 2022-09-18 at 3 10 58 AM" src="https://user-images.githubusercontent.com/42718918/190897008-7dda077f-70a4-4786-8a4f-1cfd73f5a1e6.png">
 
 * Flights TAB
-![flight_information](https://user-images.githubusercontent.com/42718918/190894530-8675e2ab-937d-445f-b7cd-fff72d04ac62.png)
+<img width="369" alt="Screen Shot 2022-09-18 at 3 05 25 AM" src="https://user-images.githubusercontent.com/42718918/190896793-567f3a20-61bd-45e2-8067-399947cb5723.png">
 
-* 
+* Flight Schedules
+<img width="548" alt="Screen Shot 2022-09-18 at 3 00 47 AM" src="https://user-images.githubusercontent.com/42718918/190896624-3ac211b1-3677-4678-9f82-ef70e86f69d9.png">
+
+
+
 
 
 * Login for employees
