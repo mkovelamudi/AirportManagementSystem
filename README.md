@@ -38,9 +38,11 @@ Saturdays
 * Flight Schedules
 <img width="548" alt="Screen Shot 2022-09-18 at 3 00 47 AM" src="https://user-images.githubusercontent.com/42718918/190896624-3ac211b1-3677-4678-9f82-ef70e86f69d9.png">
 
+* Flight Status - Departures
+<img width="686" alt="Screen Shot 2022-09-18 at 3 36 25 AM" src="https://user-images.githubusercontent.com/42718918/190897894-8769a8b9-dcea-454e-b479-4f21d7b184d8.png">
 
-
-
+* Flight Status - Arrivals
+<img width="697" alt="Screen Shot 2022-09-18 at 3 47 11 AM" src="https://user-images.githubusercontent.com/42718918/190898251-ed3514ae-c1b5-49e3-900f-62375508467d.png">
 
 * Login for employees
 <img src="https://github.com/gopinathsjsu/team-project-team-mavericks/blob/main/Documentation/Wireframes/employeeLoginPage.png" width="600">
