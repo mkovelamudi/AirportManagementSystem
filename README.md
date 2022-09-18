@@ -44,6 +44,9 @@ Saturdays
 * Flight Status - Arrivals
 <img width="697" alt="Screen Shot 2022-09-18 at 3 47 11 AM" src="https://user-images.githubusercontent.com/42718918/190898251-ed3514ae-c1b5-49e3-900f-62375508467d.png">
 
+* List of Airlines
+<img width="517" alt="AirlinesAtSffo" src="https://user-images.githubusercontent.com/42718918/190898880-2ec441ea-3bb1-4ebf-9276-0c0e19eea8a8.png">
+
 * Login for employees
 <img src="https://github.com/gopinathsjsu/team-project-team-mavericks/blob/main/Documentation/Wireframes/employeeLoginPage.png" width="600">
 * Airline Employee dashboard
