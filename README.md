@@ -32,6 +32,12 @@ Saturdays
 * Homescreen for User
 ![untitled_page](https://user-images.githubusercontent.com/42718918/190879844-04096f3d-f76d-4219-b46c-bbd4323a326b.png)
 
+* Flights TAB
+![flight_information](https://user-images.githubusercontent.com/42718918/190894530-8675e2ab-937d-445f-b7cd-fff72d04ac62.png)
+
+* 
+
+
 * Login for employees
 <img src="https://github.com/gopinathsjsu/team-project-team-mavericks/blob/main/Documentation/Wireframes/employeeLoginPage.png" width="600">
 * Airline Employee dashboard
