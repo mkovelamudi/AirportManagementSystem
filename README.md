@@ -26,7 +26,7 @@ Saturdays
 * Simplicity
 
 ## Architecture Diagram
-![image](https://user-images.githubusercontent.com/42996478/190816252-3d9c4f52-00af-4425-addd-cdb10add19bd.png)
+![202_architecture](https://user-images.githubusercontent.com/99615170/191139157-5f84d716-2d5a-4748-aea7-fee86cff825a.png)
 
 ## UI WireFrames [Link](Documentation/Wireframes/)
 * Homescreen for User
