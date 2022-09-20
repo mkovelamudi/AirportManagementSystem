@@ -5,7 +5,7 @@
 ## Team Details
 * Ananya Mandava - 016315481
 * Anurag Gajam - 016003377
-* Manish Kovelamudi
+* Manish Kovelamudi - 015920658
 * Vamshidhar Reddy Parupally - 016001427
 
 ## Tools:
