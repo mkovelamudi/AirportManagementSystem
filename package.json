@@ -1,0 +1,26 @@
+{
+  "name": "team-project-team-mavericks",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "proxy": "http://localhost:3001",
+  "scripts": {
+    "start": "nodemon server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gopinathsjsu/team-project-team-mavericks.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gopinathsjsu/team-project-team-mavericks/issues"
+  },
+  "homepage": "https://github.com/gopinathsjsu/team-project-team-mavericks#readme",
+  "dependencies": {
+    "express": "^4.18.1",
+    "nodemon": "^2.0.20"
+  }
+}
