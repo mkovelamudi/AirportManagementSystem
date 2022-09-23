@@ -1,0 +1,14 @@
+
+.hoverButton{
+    background-color: #5597c8 !important;
+    color: aliceblue;
+}
+
+.hoverButton :hover{
+    background-color: #5597c8 !important;
+    color: #5597c8 !important;
+    }
+    
+    .nav-link{
+        cursor: pointer;
+    }
