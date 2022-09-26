@@ -1,14 +1,46 @@
 
 .hoverButton{
-    background-color: #5597c8 !important;
-    color: aliceblue;
+    /* background-color: #f2e1c9 !important; */
+    color: black;
+    margin-right: 10px;
 }
 
-.hoverButton :hover{
+/* .hoverButton :hover{
     background-color: #5597c8 !important;
     color: #5597c8 !important;
-    }
+    } */
     
     .nav-link{
         cursor: pointer;
     }
+
+.navButton{
+    margin-right: 20px;
+}
+
+.navBackground{
+    background-color: #5597c8 !important
+}
+
+.nav-item{
+    /* background-color: #f2e1c9; */
+    border-radius: 5px;
+    margin-left: 10px;
+    color: black;
+}
+
+.nav-item :hover{
+    /* background-color: #f0dbbc; */
+    border-radius: 5px;
+    /* margin-left: 10px; */
+    color: black;
+}
+
+.nav-link{
+    color:black
+}
+
+.nav-link :hover{ 
+    color:rgb(68, 65, 65) !important;
+    font-weight: 800;
+}
