@@ -28,6 +28,12 @@ Saturdays
 ## Architecture Diagram
 ![202_architecture](https://user-images.githubusercontent.com/99615170/191139157-5f84d716-2d5a-4748-aea7-fee86cff825a.png)
 
+##Component Diagram
+![202_component](https://user-images.githubusercontent.com/99615170/192394406-5c94ce07-c5ef-4eee-ba20-b337312a504d.png)
+
+##Deployment Diagram
+![202_deployment](https://user-images.githubusercontent.com/99615170/192394433-e628d83e-877e-460a-862a-e4a6d4cc73f4.png)
+
 ## UI WireFrames [Link](Documentation/Wireframes/)
 * Homescreen for User
 <img width="668" alt="Screen Shot 2022-09-18 at 3 10 58 AM" src="https://user-images.githubusercontent.com/42718918/190897008-7dda077f-70a4-4786-8a4f-1cfd73f5a1e6.png">
