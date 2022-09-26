@@ -1,18 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
 import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from './Layout/Layout';
-
+import Nav from './Navigation/Nav';
+import Home from './Home/Home';
+import Footer from './Footer/Footer';
+import FlightStatus from './FlightStatus/FlightStatus';
+import LoginComponent from './Login/LoginComponent';
+import AirportEmployeeDash from './AirportEmployee/AirportEmployeeDash';
 function App() {
   const [data, setData] = React.useState(null);
-
+  const [logged,setLogged]=React.useState(false);
   // React.useEffect(() => {
   //   fetch("/api")
   //     .then((res) => res.json())
   //     .then((data) => setData(data.message));
   // }, []);
+  function changeLogged(value){
+    setLogged(value);
+  }
+  console.log(logged);
   return (
+    
     <div className="App">
       {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
@@ -28,7 +40,17 @@ function App() {
           Learn React
         </a>
       </header> */}
-      <Layout/>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout logged={logged} changeLogged={changeLogged}/>}>
+          <Route index element={<Home />} />
+          <Route path="Flight" element={<FlightStatus />} />
+          <Route path="LogIn" element={<LoginComponent changeLogged={changeLogged}/>} />
+          <Route path="AirportEmp" element={<AirportEmployeeDash />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+      
     </div>
   );
 }
