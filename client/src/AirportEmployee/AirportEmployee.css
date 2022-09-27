@@ -1,0 +1,58 @@
+.AirportEmployee{
+
+}
+
+.flightSearch{
+    width: 50%;
+}
+
+.radioButtons{
+    margin-left: 25px;
+}
+
+.search-date{
+    display: flex;
+    padding: 20px;
+}
+
+.Date_Picker{
+    width: 20% !important;
+}
+
+.react-datepicker__input-container {
+    position: relative;
+    display: inline-block;
+    width: 50%;
+}
+
+.react-datepicker-wrapper {
+    display: inline-block;
+    padding: 0;
+    border: 0;
+    width: 60%;
+    margin-left: -70px;
+}
+
+.react-datepicker__input-container input[type=text]{
+    padding: 0px;
+    font-size: 20px;
+}
+
+.flightSearchInput{
+    padding: 4px;
+    font-size: 16px !important;
+}
+.banner-management{
+   background-color: #f3e1ca;
+    height: 12vh;
+    width: 100%;
+    display: flex;
+    justify-self: start;
+    box-shadow: 5px 10px 20px 0 rgb(8 45 61 / 17%);
+
+}
+
+.banner-heading{
+    padding-top: 20px;
+    padding-left: 20px;
+}

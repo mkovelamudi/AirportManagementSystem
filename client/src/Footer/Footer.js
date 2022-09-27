@@ -11,7 +11,8 @@ class Footer extends Component {
           class="block block-flysfo-custom news-letter-footer"
         >
           <div class="container-fluid">
-            <div class={this.props.page=="LogIn"?"news-letter-footer__inner_other":"news-letter-footer__inner"} >
+            {/* <div class={this.props.page=="LogIn"?"news-letter-footer__inner_other":"news-letter-footer__inner"} > */}
+            <div class={"news-letter-footer__inner"} >
               <div class="news-letter-footer__left">
                 <div class="news-letter-footer__headline h2">
                   {/* Join Our Email List */}

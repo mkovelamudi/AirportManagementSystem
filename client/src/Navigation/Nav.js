@@ -72,7 +72,7 @@ class Nav extends Component {
               }
               this.props.change("LogIn");
             }} class="nav-link navButton" to="/LogIn">
-             {this.props.logged?"Log Out":"Log In"}
+             {(this.props.logged || localStorage.getItem('auth'))?"Log Out":"Log In"}
                   </Link></li></ul>
           {/* </button> */}
         </nav>
