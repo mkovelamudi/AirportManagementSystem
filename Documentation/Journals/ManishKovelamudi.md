@@ -1,6 +1,6 @@
 **Manish Kovelamudi
 
-Sprint 1 (12 Sep - 25 Sep):
+Sprint 1 (12 Sep - 25 Sep):**
 
 **1. What tasks did I work on?**
 
