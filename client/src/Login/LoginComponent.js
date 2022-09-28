@@ -36,7 +36,9 @@ function LoginComponent(props) {
     // check  the role of user
 
     //implement the functionality with api
+    if(email=="vamshidhar199@gmail.com")
     return "airport";
+    
   }
 
   function authorize(email,authorize){
