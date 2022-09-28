@@ -16,7 +16,7 @@ class FlightStatus extends Component {
                     id="flight_kind0"
                     name="flight_kind"
                     value="Departures"
-                    checked=""
+                    checked="true"
                   />
                 </div>
                 <div>
