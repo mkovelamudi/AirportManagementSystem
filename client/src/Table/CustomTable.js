@@ -1,22 +1,36 @@
 import React, { Component } from "react";
-import './CustomTable.css'
+import "./CustomTable.css";
 function CustomeTable(props) {
   return (
     <>
       <table>
         <tr>
-            {props.tableNames.map(x=>{
-                if(props.FromAirport && (x=="Arrives" || x=="From" || x=="Baggage Collection") )
-                {}
-                else if(!props.FromAirport && (x=="Departs" || x=="To")){}
-                else
-                return <th>{x}</th>
-            })}
-          
+          {props.tableNames.map((x) => {
+            if (
+              props.FromAirport &&
+              (x == "Arrives" || x == "From" || x == "Baggage Collection")
+            ) {
+            } else if (!props.FromAirport && (x == "Departs" || x == "To")) {
+            } else return <th>{x}</th>;
+          })}
         </tr>
+        {props.data.tableListTmp.map((x) => {
+            console.log(Object.keys(x));
+         return <tr>
+            {Object.keys(x).map(key => (
+              <td>{x[key]}</td>
+            ))}
+          </tr>;
+        })}
         <tr>
-          <td><select><option>abc</option></select></td>
-          <td><input type="text"></input></td>
+          <td>
+            <select>
+              <option>abc</option>
+            </select>
+          </td>
+          <td>
+            <input type="text"></input>
+          </td>
           <td>Germany</td>
         </tr>
         <tr>

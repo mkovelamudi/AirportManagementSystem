@@ -13,6 +13,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import "./AirportEmployee.css";
+import { json } from "react-router-dom";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -57,7 +58,22 @@ export default function EmployeeTabs() {
 
   const scheduleTableNames=["Flight No","Airline","From","To","Departs","Arrives","Terminal","Gate","Baggage Collection"]
   const gateTableNames=["Terminal","Gate Number","Status"]
+
+  const tmpDepartures={"flightno":"avc","airline":"abc","from":"test1","to":"test2","departs":"00:00","arrives":"00:00","terminal":"1","gate":"A1","baggage":"2"}
+  const tmpTerminal={"Terminal":"1","GateNumber":"A1","Status":"Open"}
   
+  const jsonTmp={};
+  const tableListTmp=[];
+  jsonTmp.tableListTmp=tableListTmp;
+
+  jsonTmp.tableListTmp.push(tmpDepartures);
+
+  const jsonTmp1={};
+  const tableListTmp1=[];
+  jsonTmp1.tableListTmp=tableListTmp1;
+
+  jsonTmp1.tableListTmp.push(tmpTerminal);
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -77,7 +93,7 @@ export default function EmployeeTabs() {
             <div class="_filterBarLine_6uyzw_5">
               <div class="_radioColumnFilter_6uyzw_37 radioButtons">
                 <div>
-                  <label for="flight_kind0">From Airport</label>
+                  <label for="flight_kind0">Departures</label>
                   <input
                     type="radio"
                     id="flight_kind0"
@@ -88,7 +104,7 @@ export default function EmployeeTabs() {
                   />
                 </div>
                 <div>
-                  <label for="flight_kind1">To Airport</label>
+                  <label for="flight_kind1">Arrivals</label>
                   <input
                     type="radio"
                     id="flight_kind1"
@@ -161,7 +177,7 @@ export default function EmployeeTabs() {
           </form>
         </div>
         {/* Table code for flight shedule */}
-        <CustomeTable tableNames={scheduleTableNames} FromAirport={FromAirport}/>
+        <CustomeTable tableNames={scheduleTableNames} FromAirport={FromAirport} data={jsonTmp}/>
 
       </TabPanel>
       <TabPanel value={value} index={1}>
@@ -193,7 +209,7 @@ export default function EmployeeTabs() {
                 </div>
               </div>
             </div>
-            <CustomeTable tableNames={gateTableNames} FromAirport={false}/>
+            <CustomeTable tableNames={gateTableNames} FromAirport={false} data={jsonTmp1}/>
         </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
