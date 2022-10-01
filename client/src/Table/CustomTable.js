@@ -1,6 +1,18 @@
-import React, { Component } from "react";
+import React, { Component,useEffect,useState } from "react";
 import "./CustomTable.css";
+
 function CustomeTable(props) {
+  const [options, setOptions] = useState([]);
+    
+    useEffect(() => {
+        setOptions(["3","4","5"]);
+      }, []);
+      
+  const baggageSelect = (x) => {
+    setOptions(["3","4"]);
+    
+    console.log(x);
+  };
   return (
     <>
       <table>
@@ -15,49 +27,37 @@ function CustomeTable(props) {
           })}
         </tr>
         {props.data.tableListTmp.map((x) => {
-            console.log(Object.keys(x));
-         return <tr>
-            {Object.keys(x).map(key => (
-              <td>{x[key]}</td>
-            ))}
-          </tr>;
+          const obj = x;
+          return (
+            <tr>
+              {Object.keys(x).map((key) => {
+                if (
+                  props.FromAirport &&
+                  (key == "arrives" || key == "from" || key == "baggage")
+                ) {
+                } else if (
+                  !props.FromAirport &&
+                  (key == "departs" || key == "to")
+                ) {
+                } else if (key == "baggage") {
+                  return (
+                    <td>
+                      <select
+                        onClick={() => {
+                          baggageSelect(obj);
+                        }}
+                      >
+                        <option selected>{x[key]}</option>
+                        {options.map(opt=>{return <option>{opt}</option>})}
+                        
+                      </select>
+                    </td>
+                  );
+                } else return <td>{x[key]}</td>;
+              })}
+            </tr>
+          );
         })}
-        <tr>
-          <td>
-            <select>
-              <option>abc</option>
-            </select>
-          </td>
-          <td>
-            <input type="text"></input>
-          </td>
-          <td>Germany</td>
-        </tr>
-        <tr>
-          <td>Centro comercial Moctezuma</td>
-          <td>Francisco Chang</td>
-          <td>Mexico</td>
-        </tr>
-        <tr>
-          <td>Ernst Handel</td>
-          <td>Roland Mendel</td>
-          <td>Austria</td>
-        </tr>
-        <tr>
-          <td>Island Trading</td>
-          <td>Helen Bennett</td>
-          <td>UK</td>
-        </tr>
-        <tr>
-          <td>Laughing Bacchus Winecellars</td>
-          <td>Yoshi Tannamuri</td>
-          <td>Canada</td>
-        </tr>
-        <tr>
-          <td>Magazzini Alimentari Riuniti</td>
-          <td>Giovanni Rovelli</td>
-          <td>Italy</td>
-        </tr>
       </table>
     </>
   );

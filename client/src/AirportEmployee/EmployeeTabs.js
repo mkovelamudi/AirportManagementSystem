@@ -177,7 +177,7 @@ export default function EmployeeTabs() {
           </form>
         </div>
         {/* Table code for flight shedule */}
-        <CustomeTable tableNames={scheduleTableNames} FromAirport={FromAirport} data={jsonTmp}/>
+        <CustomeTable tableNames={scheduleTableNames} FromAirport={FromAirport} data={jsonTmp} FlightDetails={true}/>
 
       </TabPanel>
       <TabPanel value={value} index={1}>
@@ -209,7 +209,7 @@ export default function EmployeeTabs() {
                 </div>
               </div>
             </div>
-            <CustomeTable tableNames={gateTableNames} FromAirport={false} data={jsonTmp1}/>
+            <CustomeTable tableNames={gateTableNames} FromAirport={false} data={jsonTmp1} FlightDetails={false}/>
         </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
