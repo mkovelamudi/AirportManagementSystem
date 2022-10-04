@@ -27,7 +27,16 @@ function CustomeTable(props) {
           })}
         </tr>
         {props.data && props.data.map((x) => {
+
           const obj = x;
+            console.log(!props.FromAirport)
+          if(x['type']=="arrival" && props.FromAirport) {
+
+          }
+          else if(x['type']=="departure" && !props.FromAirport) {
+            
+        }
+            else
           return (
             <tr>
               {Object.keys(props.tableNames).map((key) => {

@@ -58,7 +58,7 @@ export default function EmployeeTabs() {
   const [flightData,setFlightData]=useState();
 
   useEffect(() => {
-    axios.get('/flightSchedule/getDetails').then((res)=>{
+    axios.get('/all/flightScheduleDetails').then((res)=>{
         console.log(res)
         setFlightData(res.data);
     })
@@ -66,7 +66,7 @@ export default function EmployeeTabs() {
 
 
 //   const scheduleTableNames=["Flight No","Airline","From","To","Departs","Arrives","Terminal","Gate","Baggage Collection"]
-  const scheduleTableNames={"Flight No":"flightNumber","Airline":"airline","From":"arrival","To":"departure","Departs":"departs","Arrives":"arrives","Terminal":"terminal","Gate":"gate","Baggage Collection":"baggageCollection"}
+  const scheduleTableNames={"Flight No":"flightNumber","Airline":"airline","From":"arrival","To":"departingTo","Departs":"departs","Arrives":"arrives","Terminal":"terminal","Gate":"gate","Baggage Collection":"baggageCollection"}
   const gateTableNames=["Terminal","Gate Number","Status"]
 
   const tmpDepartures={"flightno":"avc","airline":"abc","from":"test1","to":"test2","departs":"00:00","arrives":"00:00","terminal":"1","gate":"A1","baggage":"2"}
