@@ -17,7 +17,7 @@ function CustomeTable(props) {
     <>
       <table>
         <tr>
-          {props.tableNames.map((x) => {
+          {Object.keys(props.tableNames).map((x) => {
             if (
               props.FromAirport &&
               (x == "Arrives" || x == "From" || x == "Baggage Collection")
@@ -26,20 +26,20 @@ function CustomeTable(props) {
             } else return <th>{x}</th>;
           })}
         </tr>
-        {props.data.tableListTmp.map((x) => {
+        {props.data && props.data.map((x) => {
           const obj = x;
           return (
             <tr>
-              {Object.keys(x).map((key) => {
+              {Object.keys(props.tableNames).map((key) => {
                 if (
                   props.FromAirport &&
-                  (key == "arrives" || key == "from" || key == "baggage")
+                  (key == "Arrives" || key == "From" || key == "Baggage Collection")
                 ) {
                 } else if (
                   !props.FromAirport &&
-                  (key == "departs" || key == "to")
+                  (key == "Departs" || key == "To")
                 ) {
-                } else if (key == "baggage") {
+                } else if (key == "Baggage Collection") {
                   return (
                     <td>
                       <select
@@ -47,13 +47,13 @@ function CustomeTable(props) {
                           baggageSelect(obj);
                         }}
                       >
-                        <option selected>{x[key]}</option>
+                        <option selected>{x[props.tableNames[key]]}</option>
                         {options.map(opt=>{return <option>{opt}</option>})}
                         
                       </select>
                     </td>
                   );
-                } else return <td>{x[key]}</td>;
+                } else return <td>{x[props.tableNames[key]]}</td>;
               })}
             </tr>
           );

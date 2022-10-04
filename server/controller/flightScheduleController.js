@@ -10,6 +10,7 @@ exports.getFlightSchedule = async (req,res) => {
         if (data){
         return res.json(data)}
         return res.json({})
+        
     }
     catch(error){
         console.log(error)
