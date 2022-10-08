@@ -17,6 +17,7 @@ function LoginComponent(props) {
   }, []);
 
   function navigateToRole(role){
+
     if(role=="airport")
     {
       console.log("redirecting");
@@ -24,20 +25,28 @@ function LoginComponent(props) {
       navigate('/AirportEmp')
     }
     else{
+      console.log("redirecting to airline dashboard");
 
-     // TBD
-      // redirecting to airline employee dash board
-      //navigate('/AirlineEmp')
-
+      navigate('/AirlineEmp/')
     }
+
   }
 
   function checkRole(email){
     // check  the role of user
+    // var type = email.split('@')
+    // var emp_type = type[1].split('.')
+    // console.log("checking role")
+    // console.log(emp_type[0])
 
     //implement the functionality with api
     if(email=="vamshidhar199@gmail.com")
     return "airport";
+    
+
+    else{
+    return "airline";
+    }
     
   }
 
