@@ -2,7 +2,7 @@
 import React, { Component, useEffect,useState } from "react";
 
 import CustomeTable from "../Table/CustomTable";
-
+import axios from 'axios';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -55,8 +55,18 @@ export default function EmployeeTabs() {
   const [value, setValue] = React.useState(0);
   const [startDate, setStartDate] = useState(new Date());
   const [FromAirport,setFromAirport]=useState(true);
+  const [flightData,setFlightData]=useState();
 
-  const scheduleTableNames=["Flight No","Airline","From","To","Departs","Arrives","Terminal","Gate","Baggage Collection"]
+  useEffect(() => {
+    axios.get('/all/flightScheduleDetails').then((res)=>{
+        console.log(res)
+        setFlightData(res.data);
+    })
+  },[]);
+
+
+//   const scheduleTableNames=["Flight No","Airline","From","To","Departs","Arrives","Terminal","Gate","Baggage Collection"]
+  const scheduleTableNames={"Flight No":"flightNumber","Airline":"airline","From":"arrival","To":"departingTo","Departs":"departs","Arrives":"arrives","Terminal":"terminal","Gate":"gate","Baggage Collection":"baggageCollection"}
   const gateTableNames=["Terminal","Gate Number","Status"]
 
   const tmpDepartures={"flightno":"avc","airline":"abc","from":"test1","to":"test2","departs":"00:00","arrives":"00:00","terminal":"1","gate":"A1","baggage":"2"}
@@ -177,7 +187,7 @@ export default function EmployeeTabs() {
           </form>
         </div>
         {/* Table code for flight shedule */}
-        <CustomeTable tableNames={scheduleTableNames} FromAirport={FromAirport} data={jsonTmp} FlightDetails={true}/>
+        <CustomeTable tableNames={scheduleTableNames} FromAirport={FromAirport} data={flightData} FlightDetails={true}/>
 
       </TabPanel>
       <TabPanel value={value} index={1}>

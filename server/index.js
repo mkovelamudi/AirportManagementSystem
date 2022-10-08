@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require("express");
 const mongoose = require("mongoose")
 const app = express();
-const routes = require('./routes/routes');
+const allRoutes = require('./routes/allRoute');
 
 const mongoString = process.env.DATABASE_URL;
 
@@ -27,4 +27,4 @@ app.listen(3001, () => {
   console.log(`Server listening on 3001`);
 });
 
-app.use('/api', routes)
+app.use('/all', allRoutes)
