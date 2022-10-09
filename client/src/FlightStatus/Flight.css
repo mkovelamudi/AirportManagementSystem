@@ -1,97 +1,166 @@
 ._filterBar_6uyzw_1 {
-    color: #1b1d1f;
-    padding: 20px;
+  color: #1b1d1f;
+  padding: 20px;
 }
-.flightStatus{
-    font-weight: 800;
+.flightStatus {
+  font-weight: 800;
 }
 ._filterBarLine_6uyzw_5 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 ._additionalFilters_6uyzw_71.active {
-    padding-bottom: 20px;
+  padding-bottom: 20px;
 }
 ._filterBarLine_6uyzw_5 {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 ._radioColumnFilter_6uyzw_37 {
-    display: flex;
-    column-gap: 23px;
+  display: flex;
+  column-gap: 23px;
 }
-form input[type="radio"], form input[type="radio"]::before, form input[type="radio"]:focus {
-    border-radius: 100%;
+form input[type="radio"],
+form input[type="radio"]::before,
+form input[type="radio"]:focus {
+  border-radius: 100%;
 }
 ._radioColumnFilter_6uyzw_37 label {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 ._radioColumnFilter_6uyzw_37 {
-    display: flex;
-    column-gap: 23px;
+  display: flex;
+  column-gap: 23px;
 }
 ._radioColumnFilter_6uyzw_37 label {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 ._radioColumnFilter_6uyzw_37 label {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 ._globalFilter_6uyzw_11 {
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    margin-left: 25px;
-    margin-right: 25px;
+  flex-grow: 1;
+  /* background-image: url("./../Assets/icon-plane-takeoff.svg"); */
+  display: flex;
+  align-items: center;
+  margin-left: 25px;
+  margin-right: 25px;
+  /* background-repeat: no-repeat; */
 }
 ._globalFilter_6uyzw_11 label {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 ._sortingFilter_6uyzw_155 {
-    display: none;
+  display: none;
 }
-._globalFilter_6uyzw_11 input[type=text] {
-    width: 100%;
-    /* background-image: url(data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3C!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --%3E%3Cpath d='M500.3 443.7l-119.7-119.7c27.22-40.41 40.65-90.9 33.46-144.7C401.8 87.79 326.8 13.32 235.2 1.723C99.01-15.51-15.51 99.01 1.724 235.2c11.6 91.64 86.08 166.7 177.6 178.9c53.8 7.189 104.3-6.236 144.7-33.46l119.7 119.7c15.62 15.62 40.95 15.62 56.57 0C515.9 484.7 515.9 459.3 500.3 443.7zM79.1 208c0-70.58 57.42-128 128-128s128 57.42 128 128c0 70.58-57.42 128-128 128S79.1 278.6 79.1 208z'/%3E%3C/svg%3E); */
-    background-repeat: no-repeat;
-    background-size: 14px 14px;
-    background-position: 10px center;
-    padding-left: 34px;
-    background: #fff;
-    border: 1px solid #6e92a6;
-    border-radius: 5px;
-    box-shadow: 0;
-    color: #1b1d1f;
-    /* height: auto;
+._globalFilter_6uyzw_11 input[type="text"] {
+  width: 100%;
+  /* background-image: url(data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3C!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --%3E%3Cpath d='M500.3 443.7l-119.7-119.7c27.22-40.41 40.65-90.9 33.46-144.7C401.8 87.79 326.8 13.32 235.2 1.723C99.01-15.51-15.51 99.01 1.724 235.2c11.6 91.64 86.08 166.7 177.6 178.9c53.8 7.189 104.3-6.236 144.7-33.46l119.7 119.7c15.62 15.62 40.95 15.62 56.57 0C515.9 484.7 515.9 459.3 500.3 443.7zM79.1 208c0-70.58 57.42-128 128-128s128 57.42 128 128c0 70.58-57.42 128-128 128S79.1 278.6 79.1 208z'/%3E%3C/svg%3E); */
+  background-repeat: no-repeat;
+  background-size: 14px 14px;
+  background-position: 10px center;
+  padding-left: 34px;
+  background: #fff;
+  border: 1px solid #6e92a6;
+  border-radius: 5px;
+  box-shadow: 0;
+  color: #1b1d1f;
+  /* height: auto;
     width: 275px;
-    padding: 1.5rem 1rem; */
-    font-size: 20px;
-    line-height: 130%;
-    outline: none;
-    padding-bottom: 4px;
-    padding-top: 4px;
+    paddang: 1.5rem 1rem; */
+  font-size: 20px;
+  line-height: 130%;
+  outline: none;
+  padding-bottom: 4px;
+  padding-top: 4px;
 }
 
 ._buttonReset_1rau0_46 {
-    padding: 4px 10px 5px 10px;
-    border-radius: 5px;
-    border: solid 2px #1a1a1a;
-    font-family: Arial;
-    font-size: 16px;
-    font-weight: 400;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.4;
-    letter-spacing: 1.12px;
-    text-align: left;
-    color: #1a1a1a;
-    cursor: pointer;
-    outline: inherit;
-    background-color: transparent;
+  padding: 4px 10px 5px 10px;
+  border-radius: 5px;
+  border: solid 2px #1a1a1a;
+  font-family: Arial;
+  font-size: 16px;
+  font-weight: 400;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.4;
+  letter-spacing: 1.12px;
+  text-align: left;
+  color: #1a1a1a;
+  cursor: pointer;
+  outline: inherit;
+  background-color: transparent;
 }
 
 ._selectColumnFilter_6uyzw_57 {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
+}
+*/ .AirportEmployee {
+}
+
+.flightSearch {
+  width: 50%;
+}
+
+.radioButtons {
+  margin-left: 25px;
+}
+
+.search-date {
+  display: flex;
+  padding: 20px;
+}
+
+.Date_Picker {
+  width: 20% !important;
+}
+
+.react-datepicker__input-container {
+  position: relative;
+  display: inline-block;
+  width: 50%;
+}
+
+.react-datepicker-wrapper {
+  display: inline-block;
+  padding: 0;
+  border: 0;
+  width: 60%;
+  margin-left: -70px;
+}
+
+.react-datepicker__input-container input[type="text"] {
+  padding: 0px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.flightSearchInput {
+  padding: 4px;
+  font-size: 16px !important;
+}
+.banner-management {
+  background-color: #f3e1ca;
+  height: 12vh;
+  width: 100%;
+  display: flex;
+  justify-self: start;
+  box-shadow: 5px 10px 20px 0 rgb(8 45 61 / 17%);
+}
+
+.banner-heading {
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+#flightsGlobalSearch {
+  background-image: url("./../Assets/icon-plane-takeoff.svg");
+  background-position: 5px 3px;
+  background-repeat: no-repeat;
+  padding-left: 50px;
+  padding-bottom: 2px;
 }
