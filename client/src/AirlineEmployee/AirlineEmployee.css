@@ -1,0 +1,104 @@
+
+.flightSearch{
+    width: 50%;
+}
+
+.radioButtons{
+    margin-left: 25px;
+}
+
+.search-date{
+    display: flex;
+    padding: 20px;
+}
+
+.Date_Picker{
+    width: 20% !important;
+}
+
+.react-datepicker__input-container {
+    position: relative;
+    display: inline-block;
+    width: 50%;
+}
+
+.react-datepicker-wrapper {
+    display: inline-block;
+    padding: 0;
+    border: 0;
+    width: 60%;
+    margin-left: -70px;
+}
+
+.react-datepicker__input-container input[type=text]{
+    padding: 0px;
+    font-size: 20px;
+}
+
+.flightSearchInput{
+    padding: 4px;
+    font-size: 16px !important;
+}
+.banner-management{
+   background-color: #f3e1ca;
+    height: 12vh;
+    width: 100%;
+    display: flex;
+    justify-self: start;
+    box-shadow: 5px 10px 20px 0 rgb(8 45 61 / 17%);
+    text-align: center;
+
+}
+.radio_search{
+    margin-left: 0%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.airline_radio{
+    margin-top: 10px;
+    margin-right: 50px;
+}
+.banner-heading{
+    /* padding-top: 20px;
+    padding-left: 20px; */
+    text-align: center;
+}
+
+
+
+.search{
+    float: right;
+    padding: 6px;
+    border: none;
+    /* margin-top: 8px; */
+    /* margin-right: 42px; */
+    font-size: 17px;
+    width: 50%;
+    margin-left: 20px;
+    background-image: url('./../Assets/icon-plane-takeoff.svg');
+    background-position: 10px 10px; 
+    background-repeat: no-repeat;
+    padding-left:66px;
+    
+}
+
+
+
+.airline_table{
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+    display: block;
+    overflow: scroll;
+    
+}
+.table_head{
+    text-align: center;
+}
+
+.table{
+    text-align: center;
+}
+
+
+

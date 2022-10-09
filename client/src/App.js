@@ -11,6 +11,7 @@ import Footer from './Footer/Footer';
 import FlightStatus from './FlightStatus/FlightStatus';
 import LoginComponent from './Login/LoginComponent';
 import AirportEmployeeDash from './AirportEmployee/AirportEmployeeDash';
+import AirlineEmployeeDash from './AirlineEmployee/AirlineEmployee';
 function App() {
   const [data, setData] = React.useState(null);
   const [logged,setLogged]=React.useState(false);
@@ -47,6 +48,7 @@ function App() {
           <Route path="Flight" element={<FlightStatus />} />
           <Route path="LogIn" element={<LoginComponent changeLogged={changeLogged}/>} />
           <Route path="AirportEmp" element={<AirportEmployeeDash />} />
+          <Route path="AirlineEmp" element={<AirlineEmployeeDash />} />
         </Route>
       </Routes>
     </BrowserRouter>
