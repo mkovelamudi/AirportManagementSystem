@@ -44,10 +44,6 @@ function LoginComponent(props) {
     
     return role;
     
-
-    else{
-    return "airline";
-    }
     
   }
 
