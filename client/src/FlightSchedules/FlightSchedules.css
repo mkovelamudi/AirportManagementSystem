@@ -1,0 +1,25 @@
+.search-Flight {
+  margin: 50px;
+}
+
+.Flight-to {
+  padding-left: 20px;
+}
+
+.Flight-textbox {
+  margin-left: 7px;
+  border-radius: 5px;
+}
+
+.button {
+  margin-left: 10px;
+  border-radius: 10px;
+}
+
+.timeFrame {
+  /* margin-left: 0px; */
+  position: relative;
+  top: 10px;
+  left: -500px;
+  margin-top: 50px;
+}
