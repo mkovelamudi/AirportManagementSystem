@@ -1,12 +1,13 @@
-import React, { Component ,useEffect} from 'react';
+import React, { Component ,useEffect,useState} from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 import "./Login.css";
 
 function LoginComponent(props) {
 
   // for navigation redirection
   const navigate=useNavigate();
-
+  const [role,setRole]=useState(null);
 
   useEffect(() => {
     const auth = JSON.parse(localStorage.getItem('auth'));
@@ -17,6 +18,7 @@ function LoginComponent(props) {
   }, []);
 
   function navigateToRole(role){
+
     if(role=="airport")
     {
       console.log("redirecting");
@@ -24,27 +26,50 @@ function LoginComponent(props) {
       navigate('/AirportEmp')
     }
     else{
+      console.log("redirecting to airline dashboard");
 
-     // TBD
-      // redirecting to airline employee dash board
-      //navigate('/AirlineEmp')
-
+      navigate('/AirlineEmp/')
     }
+
   }
 
   function checkRole(email){
     // check  the role of user
+    // var type = email.split('@')
+    // var emp_type = type[1].split('.')
+    // console.log("checking role")
+    // console.log(emp_type[0])
 
     //implement the functionality with api
-    if(email=="vamshidhar199@gmail.com")
-    return "airport";
+    
+    return role;
+    
     
   }
 
   function authorize(email,authorize){
     // check if username and password are correct 
     //implement the functionality with api
-    return true;
+    return axios.post('/all/login', {
+      emailAddress: email,
+      password: authorize
+    })
+    .then((response)=> {
+      console.log(response);
+      if(response.data.login=="successful")
+      {
+        setRole(response.data.type)
+        return true;
+      }
+      else
+        return false;
+    })
+    .catch( (error)=> {
+      console.log(error);
+      return false;
+    });
+
+   
   }
 
   function handleSubmit(event){
@@ -56,9 +81,10 @@ function LoginComponent(props) {
     const email=event.target.email.value;
     const password=event.target.password.value;
 
-    const role=checkRole(email);
+    
     const isLogin=authorize(email,password);
-    const auth="{ \"username\":\""+email+"\", \"role\":\""+role+ "\" ,\"isLogged\":\""+isLogin+"\"}";
+    const userRole=checkRole(email);
+    const auth="{ \"username\":\""+email+"\", \"role\":\""+userRole+ "\" ,\"isLogged\":\""+isLogin+"\"}";
 
     var sitePersonel = {};
     var employees = []
@@ -69,7 +95,7 @@ function LoginComponent(props) {
    
     var employee = {
       "userName": email,
-      "userRole": role,
+      "userRole": userRole,
       "isLogged":isLogin
     }
     sitePersonel.employees.push(employee);
@@ -85,7 +111,7 @@ function LoginComponent(props) {
 
     localStorage.setItem('auth', JSON.stringify(sitePersonel));
     props.changeLogged(true)    ;
-    navigateToRole(role);
+    navigateToRole(userRole);
   }
 
   return  <>
