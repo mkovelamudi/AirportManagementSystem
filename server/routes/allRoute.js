@@ -12,7 +12,7 @@ router.get('/flightScheduleDetails', flightScheduleControllers.getFlightSchedule
 
 router.post('/login', loginController.logIn)
 
-router.get('/availableGates', availableGates.getAvailableGateBelt)
+router.post('/availableGates', availableGates.getAvailableGateBelt)
 
 router.post('/postData',availableGates.pushData)
 
