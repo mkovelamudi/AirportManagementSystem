@@ -8,7 +8,7 @@ exports.getAvailableGateBelt = async (req, res) => {
         resDate = req.body.date
         resTerminal = req.body.terminal
         type = req.body.type
-        const occupiedData = await userModel.find({"endTime":{$gt : resDate}, "startTime":{$lt : resDate} })
+        const occupiedData = await userModel.find({"endTime":{$gte : resDate}, "startTime":{$lte : resDate} })
         const terminalData = await userModelTerminal.find({'terminal':resTerminal})
         if(type == 'gate'){
             temp = []
