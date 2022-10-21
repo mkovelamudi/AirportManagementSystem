@@ -2,6 +2,7 @@
 // const mongoose = require('mongoose');
 
 const userModel = require('../models/ScheduledFlight')
+const userModelAvailabe = require('../models/occupiedGates&Belts')
 
 exports.getFlightSchedule = async (req,res) => {
     try{
@@ -25,6 +26,31 @@ exports.updateFlightSchedule = async (req, res) => {
         const baggage = req.body.baggageCollection;
         var myobject = {_id:object_id}
         var mybaggage = {$set: {baggageCollection: baggage}}
+        var myobjectavailable = {object_id: object_id}
+
+        //Update the belt in scheduledFlights
+        await userModel.updateOne(myobject,  mybaggage);
+
+        // Get the belt allocated to that particular gate
+        const data = await userModelAvailabe.findOne(myobjectavailable)
+
+        // enddate the record 
+        await userModelAvailabe.updateOne(myobjectavailable, {$set: {endTime: data.startTime}})
+
+        //create a newrecord
+        console.log(baggage)
+        const newdata = new userModelAvailabe({
+            object_id: object_id,
+            terminal: data.terminal,
+            gate: data.gate,
+            belt: baggage,
+            startTime: data.startTime,
+            endTime: new Date(data.startTime.getTime() + 60 * 60000)
+        })
+
+
+        console.log(newdata)
+        const datasave = await newdata.save()
         
         await userModel.updateOne(myobject,  mybaggage);
 
