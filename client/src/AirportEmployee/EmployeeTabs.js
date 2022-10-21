@@ -14,6 +14,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import "./AirportEmployee.css";
 import { json } from "react-router-dom";
+import { BsSearch } from "react-icons/bs";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -56,6 +57,9 @@ export default function EmployeeTabs() {
   const [startDate, setStartDate] = useState(new Date());
   const [FromAirport,setFromAirport]=useState(true);
   const [flightData,setFlightData]=useState();
+  const [searchData,setSearchData]=useState();
+  const [terminalData,setTerminalData]=useState();
+
 
   useEffect(() => {
     axios.get('/all/flightScheduleDetails').then((res)=>{
@@ -67,7 +71,7 @@ export default function EmployeeTabs() {
 
 //   const scheduleTableNames=["Flight No","Airline","From","To","Departs","Arrives","Terminal","Gate","Baggage Collection"]
   const scheduleTableNames={"Flight No":"flightNumber","Airline":"airline","From":"arrival","To":"departingTo","Departs":"departs","Arrives":"arrives","Terminal":"terminal","Gate":"gate","Baggage Collection":"baggageCollection"}
-  const gateTableNames=["Terminal","Gate Number","Status"]
+  const gateTableNames={"Terminal":"Terminal","GateNumber":"GateNumber","Status":"Status"}
 
   const tmpDepartures={"flightno":"avc","airline":"abc","from":"test1","to":"test2","departs":"00:00","arrives":"00:00","terminal":"1","gate":"A1","baggage":"2"}
   const tmpTerminal={"Terminal":"1","GateNumber":"A1","Status":"Open"}
@@ -86,7 +90,26 @@ export default function EmployeeTabs() {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+    setSearchData(null)
   };
+
+  const changeTerminal=(e)=>{
+    setTerminalData(e.target.value)
+  }
+  const updateDataOnDate=(date)=>{
+    setSearchData(date);
+  }
+
+  const Search=(e)=>{
+        // let newFlightData=flightData.filter((x)=>{
+        //     if(x.Airline==e.target.value || x.flightno==e.target.value)
+        //     return x;
+        // })
+
+        setSearchData(e.target.value)
+
+        
+  }
 
   return (
     <Box sx={{ width: '100%' }}>
@@ -142,14 +165,15 @@ export default function EmployeeTabs() {
                   className="flightSearchInput"
                   type="text"
                   placeholder="Airline, Departing To, Flight #"
-                  value=""
+                  
+                  onChange={(e)=>Search(e)}
                 />
               </div>
               <div class="_globalFilter_6uyzw_11 Date_Picker">
                 <label for="flightsGlobalSearch" class="_filterLabel_6uyzw_46">
                   Date:{" "}
                 </label>
-                <DatePicker style={{ width:"50%"}}selected={startDate} onChange={(date) => setStartDate(date)} />
+                <DatePicker style={{ width:"50%"}}selected={startDate} onChange={(date) => updateDataOnDate(date)} />
               </div>
               <div>
               
@@ -187,7 +211,7 @@ export default function EmployeeTabs() {
           </form>
         </div>
         {/* Table code for flight shedule */}
-        <CustomeTable tableNames={scheduleTableNames} FromAirport={FromAirport} data={flightData} FlightDetails={true}/>
+        <CustomeTable tableNames={scheduleTableNames} FromAirport={FromAirport} data={flightData} FlightDetails={true} searchData={searchData}/>
 
       </TabPanel>
       <TabPanel value={value} index={1}>
@@ -209,6 +233,7 @@ export default function EmployeeTabs() {
                     <select
                       name="airline.airline_name"
                       id="airline.airline_name"
+                      onChange={(e)=>changeTerminal(e)}
                     >
                       <option value="">All</option>
                       <option value="Adria Airways">Terminal 1</option>
@@ -219,7 +244,7 @@ export default function EmployeeTabs() {
                 </div>
               </div>
             </div>
-            <CustomeTable tableNames={gateTableNames} FromAirport={false} data={jsonTmp1} FlightDetails={false}/>
+            <CustomeTable tableNames={gateTableNames} FromAirport={false} data={jsonTmp1.tableListTmp} FlightDetails={false} searchData={terminalData}/>
         </div>
       </TabPanel>
       <TabPanel value={value} index={2}>

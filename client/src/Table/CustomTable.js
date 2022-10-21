@@ -2,12 +2,61 @@ import React, { Component, useEffect, useState } from "react";
 import "./CustomTable.css";
 import axios from "axios";
 
+//for snack bar
+import Button from '@mui/material/Button';
+import Snackbar from '@mui/material/Snackbar';
+import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
+
 function CustomeTable(props) {
   const [options, setOptions] = useState([]);
 
   useEffect(() => {
     //setOptions(["3", "4", "5"]);
+    console.log(props.searchData)
   }, []);
+
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleClick = () => {
+    setOpen(true);
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const action = (
+    <React.Fragment>
+      <Button color="secondary" size="small" onClick={handleClose}>
+        close
+      </Button>
+      <IconButton
+        size="small"
+        aria-label="close"
+        color="inherit"
+        onClick={handleClose}
+      >
+        
+      </IconButton>
+    </React.Fragment>
+  );
+
+
+
+  const baggageChange=(e,x)=>{
+    console.log("baggage changed")
+    console.log(e.target.value)
+
+    // axios call to update the availability
+    handleClick()
+  }
+
 
   const baggageSelect = (x) => {
     var time=x.arrives;
@@ -20,7 +69,7 @@ function CustomeTable(props) {
         type: Type,
       })
       .then((res) => {
-        console.log(res);
+        // console.log(res);
         setOptions(res.data);
       });
     
@@ -29,6 +78,15 @@ function CustomeTable(props) {
   };
   return (
     <>
+    <Snackbar
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+        message="Saved Succesfully"
+        action={action}
+      >
+        
+        </Snackbar>
       <table>
         <tr>
           {Object.keys(props.tableNames).map((x) => {
@@ -40,8 +98,17 @@ function CustomeTable(props) {
             } else return <th>{x}</th>;
           })}
         </tr>
-        {props.data &&
-          props.data.map((x) => {
+        {console.log(props.tableNames)}
+        {props.data && 
+          props.data.filter((x)=>{
+            if(props.searchData==null){
+                return x;
+            }
+            else{
+                if((x["airline"] && x["airline"].toLowerCase().includes(props.searchData.toLowerCase())) || (!props.searchData==="All" && x["Terminal"] && x["Terminal"]==Number(props.searchData.split(" ")[1])))
+                    return x;
+            }
+          }).map((x) => {
             const obj = x;
             console.log(!props.FromAirport);
             if (x["type"] == "arrival" && props.FromAirport) {
@@ -67,6 +134,9 @@ function CustomeTable(props) {
                             onClick={() => {
                               baggageSelect(obj);
                             }}
+                            onChange={(e) => {
+                                baggageChange(e,obj);
+                              }}
                           >
                             <option selected>{x[props.tableNames[key]]}</option>
                             {options.map((opt) => {
