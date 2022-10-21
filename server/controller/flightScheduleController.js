@@ -51,7 +51,8 @@ exports.updateFlightSchedule = async (req, res) => {
 
         console.log(newdata)
         const datasave = await newdata.save()
-
+        
+        await userModel.updateOne(myobject,  mybaggage);
 
         return res.status(200).send('Updated Successfully')
 
