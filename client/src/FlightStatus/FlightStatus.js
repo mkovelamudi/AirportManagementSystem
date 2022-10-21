@@ -171,6 +171,7 @@ export default function EmployeeTabs() {
   const [startDate, setStartDate] = useState(new Date());
   const [FromAirport, setFromAirport] = useState(true);
   const [flightData, setFlightData] = useState();
+  const [searchData,setSearchData]=useState();
 
   useEffect(() => {
     axios.get("/all/flightScheduleDetails").then((res) => {
@@ -193,6 +194,16 @@ export default function EmployeeTabs() {
   };
   const gateTableNames = ["Terminal", "Gate Number", "Status"];
 
+  const Search=(e)=>{
+    // let newFlightData=flightData.filter((x)=>{
+    //     if(x.Airline==e.target.value || x.flightno==e.target.value)
+    //     return x;
+    // })
+
+    setSearchData(e.target.value)
+
+    
+}
   const tmpDepartures = {
     flightno: "avc",
     airline: "abc",
@@ -283,7 +294,8 @@ export default function EmployeeTabs() {
                   id="flightsGlobalSearch"
                   className="flightSearchInput"
                   type="text"
-                  placeholder="Airline, Departing To, Flight #"
+                  placeholder="Airline, Flight #"
+                  onChange={(e)=>Search(e)}
                   // value=""
                 />
               </div>
@@ -340,6 +352,7 @@ export default function EmployeeTabs() {
           FromAirport={FromAirport}
           data={flightData}
           FlightDetails={true}
+          searchData={searchData}
         />
       </TabPanel>
       <TabPanel value={value} index={1}>
@@ -370,6 +383,8 @@ export default function EmployeeTabs() {
             FromAirport={false}
             data={jsonTmp1}
             FlightDetails={false}
+            type={"Customer"}
+            searchData={searchData}
           />
         </div>
       </TabPanel>

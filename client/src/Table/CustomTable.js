@@ -51,10 +51,18 @@ function CustomeTable(props) {
 
   const baggageChange=(e,x)=>{
     console.log("baggage changed")
-    console.log(e.target.value)
+    console.log(e)
+    console.log(x)
 
     // axios call to update the availability
-    handleClick()
+    axios.post('all/updateflightScheduleGate',{
+       object_id: x._id,
+       baggageCollection:e.target.value
+    }).then((res)=>{
+            handleClick()
+        }
+    )
+    
   }
 
 
@@ -89,6 +97,9 @@ function CustomeTable(props) {
         </Snackbar>
       <table>
         <tr>
+            {console.log(props.searchData)}
+            
+           
           {Object.keys(props.tableNames).map((x) => {
             if (
               props.FromAirport &&
@@ -101,11 +112,13 @@ function CustomeTable(props) {
         {console.log(props.tableNames)}
         {props.data && 
           props.data.filter((x)=>{
-            if(props.searchData==null){
+            x["Terminal"] && console.log(x["Terminal"])
+            if(props.searchData==null || props.searchData=="All"){
                 return x;
             }
+           
             else{
-                if((x["airline"] && x["airline"].toLowerCase().includes(props.searchData.toLowerCase())) || (!props.searchData==="All" && x["Terminal"] && x["Terminal"]==Number(props.searchData.split(" ")[1])))
+                if((x["airline"] && x["airline"].toLowerCase().includes(props.searchData.toLowerCase())) || ((x["Terminal"] && x["Terminal"]==props.searchData)))
                     return x;
             }
           }).map((x) => {
@@ -130,7 +143,7 @@ function CustomeTable(props) {
                     } else if (key == "Baggage Collection") {
                       return (
                         <td>
-                          <select
+                         { (props.type && props.type=="Airport") ? <select
                             onClick={() => {
                               baggageSelect(obj);
                             }}
@@ -143,6 +156,9 @@ function CustomeTable(props) {
                               return <option>{opt}</option>;
                             })}
                           </select>
+                          
+                            : x[props.tableNames[key]]
+                          }
                         </td>
                       );
                     } else return <td>{x[props.tableNames[key]]}</td>;

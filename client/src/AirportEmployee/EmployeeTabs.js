@@ -97,7 +97,7 @@ export default function EmployeeTabs() {
     setTerminalData(e.target.value)
   }
   const updateDataOnDate=(date)=>{
-    setSearchData(date);
+    setStartDate(date);
   }
 
   const Search=(e)=>{
@@ -211,7 +211,7 @@ export default function EmployeeTabs() {
           </form>
         </div>
         {/* Table code for flight shedule */}
-        <CustomeTable tableNames={scheduleTableNames} FromAirport={FromAirport} data={flightData} FlightDetails={true} searchData={searchData}/>
+        <CustomeTable tableNames={scheduleTableNames} type={"Airport"} FromAirport={FromAirport} data={flightData} FlightDetails={true} searchData={searchData}/>
 
       </TabPanel>
       <TabPanel value={value} index={1}>
@@ -220,7 +220,12 @@ export default function EmployeeTabs() {
               class="_filterBarLine_6uyzw_5 _additionalFiltersSection_6uyzw_152"
               id="additional-options"
             >
-              <div></div>
+              <div class="_globalFilter_6uyzw_11 Date_Picker">
+                <label for="flightsGlobalSearch" class="_filterLabel_6uyzw_46">
+                  Date:{" "}
+                </label>
+                <DatePicker style={{ width:"50%"}}selected={startDate} onChange={(date) => updateDataOnDate(date)} />
+              </div>
               <div class="_airlineFilter_6uyzw_146">
                 <div class="_selectColumnFilter_6uyzw_57">
                   <label
@@ -235,16 +240,17 @@ export default function EmployeeTabs() {
                       id="airline.airline_name"
                       onChange={(e)=>changeTerminal(e)}
                     >
-                      <option value="">All</option>
-                      <option value="Adria Airways">Terminal 1</option>
-                      <option value="AEGEAN AIRLINES">Terminal 2</option>
-                      <option value="Aer Lingus">Terminal 3</option>
+                      <option value="All">All</option>
+                      <option value="1">Terminal 1</option>
+                      <option value="2">Terminal 2</option>
+                      <option value="3">Terminal 3</option>
                     </select>
                   </div>
                 </div>
               </div>
             </div>
-            <CustomeTable tableNames={gateTableNames} FromAirport={false} data={jsonTmp1.tableListTmp} FlightDetails={false} searchData={terminalData}/>
+            <br></br>
+            <CustomeTable tableNames={gateTableNames} FromAirport={false} type={"Airport"} data={jsonTmp1.tableListTmp} FlightDetails={false} searchData={terminalData}/>
         </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
