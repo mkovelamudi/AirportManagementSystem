@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const occupiedGatesBelt = new Schema({
+    'object_id':{
+        type: String,
+        required: true
+    },
     'terminal': {
         type: String,
         required: true
