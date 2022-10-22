@@ -62,7 +62,7 @@ export default function EmployeeTabs() {
 
 
   useEffect(() => {
-    axios.get('/all/flightScheduleDetails').then((res)=>{
+    axios.post('/all/flightScheduleDetails').then((res)=>{
         console.log(res)
         setFlightData(res.data);
     })
@@ -93,11 +93,34 @@ export default function EmployeeTabs() {
     setSearchData(null)
   };
 
+  const baggageChangeHandler=()=>{
+    if(startDate!=null){
+        axios.post('/all/flightScheduleDetails',{
+            date:startDate
+        }).then((res)=>{
+            console.log(res)
+            setFlightData(res.data);
+        })
+    }
+    else{
+        axios.post('/all/flightScheduleDetails').then((res)=>{
+            console.log(res)
+            setFlightData(res.data);
+        })
+    }
+  }
   const changeTerminal=(e)=>{
     setTerminalData(e.target.value)
   }
   const updateDataOnDate=(date)=>{
     setStartDate(date);
+    console.log(date)
+    axios.post('/all/flightScheduleDetails',{
+        date:date
+    }).then((res)=>{
+        console.log(res)
+        setFlightData(res.data);
+    })
   }
 
   const Search=(e)=>{
@@ -211,7 +234,7 @@ export default function EmployeeTabs() {
           </form>
         </div>
         {/* Table code for flight shedule */}
-        <CustomeTable tableNames={scheduleTableNames} type={"Airport"} FromAirport={FromAirport} data={flightData} FlightDetails={true} searchData={searchData}/>
+        <CustomeTable tableNames={scheduleTableNames} type={"Airport"} baggageChangeHandler={baggageChangeHandler} FromAirport={FromAirport} data={flightData} FlightDetails={true} searchData={searchData}/>
 
       </TabPanel>
       <TabPanel value={value} index={1}>
@@ -250,7 +273,7 @@ export default function EmployeeTabs() {
               </div>
             </div>
             <br></br>
-            <CustomeTable tableNames={gateTableNames} FromAirport={false} type={"Airport"} data={jsonTmp1.tableListTmp} FlightDetails={false} searchData={terminalData}/>
+            <CustomeTable tableNames={gateTableNames} FromAirport={false} baggageChangeHandler={baggageChangeHandler} type={"Airport"} data={jsonTmp1.tableListTmp} FlightDetails={false} searchData={terminalData}/>
         </div>
       </TabPanel>
       <TabPanel value={value} index={2}>

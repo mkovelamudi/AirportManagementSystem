@@ -6,8 +6,8 @@ const moment = require('moment')
 exports.getFlightSchedule = async (req,res) => {
 
     try{
-        const date = req.body.date;
-
+        const date = moment(req.body.date).format('YYYY-MM-DD');
+        
         var startDate = moment(new Date()).format('YYYY-MM-DD')
         var endDate =  moment(startDate, 'YYYY-MM-DD').add(1,'days').format('YYYY-MM-DD')
 

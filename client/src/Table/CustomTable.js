@@ -9,7 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 
 function CustomeTable(props) {
-  const [options, setOptions] = useState([]);
+  const [options, setOptions] = useState(new Map());
 
   useEffect(() => {
     //setOptions(["3", "4", "5"]);
@@ -51,8 +51,8 @@ function CustomeTable(props) {
 
   const baggageChange=(e,x)=>{
     console.log("baggage changed")
-    console.log(e)
-    console.log(x)
+    console.log(e.target.value)
+    console.log(x._id)
 
     // axios call to update the availability
     axios.post('all/updateflightScheduleGate',{
@@ -60,13 +60,14 @@ function CustomeTable(props) {
        baggageCollection:e.target.value
     }).then((res)=>{
             handleClick()
+            props.baggageChangeHandler()
         }
     )
     
   }
 
 
-  const baggageSelect = (x) => {
+  const baggageSelect = (x,currValue) => {
     var time=x.arrives;
     var terminal=x.terminal;
     var Type="belt";
@@ -78,7 +79,9 @@ function CustomeTable(props) {
       })
       .then((res) => {
         // console.log(res);
-        setOptions(res.data);
+        let data=res.data;
+
+        setOptions(new Map(options.set(x._id,data)));
       });
     
 
@@ -128,7 +131,7 @@ function CustomeTable(props) {
             } else if (x["type"] == "departure" && !props.FromAirport) {
             } else
               return (
-                <tr>
+                <tr key={x["_id"]}>
                   {Object.keys(props.tableNames).map((key) => {
                     if (
                       props.FromAirport &&
@@ -144,16 +147,26 @@ function CustomeTable(props) {
                       return (
                         <td>
                          { (props.type && props.type=="Airport") ? <select
-                            onClick={() => {
-                              baggageSelect(obj);
+                            
+                            onClick={(e) => {
+                              baggageSelect(obj,e.target.value);
                             }}
-                            onChange={(e) => {
+                            onChange={(e,x) => {
+                                console.log("inside on change")
+                                console.log(obj)
                                 baggageChange(e,obj);
                               }}
                           >
-                            <option selected>{x[props.tableNames[key]]}</option>
-                            {options.map((opt) => {
-                              return <option>{opt}</option>;
+                            <option selected key={x["_id"]}>{x[props.tableNames[key]]}</option>
+                            {console.log(x[props.tableNames[key]]) }
+                            {options.get(x["_id"])  && [ ... options.get(x["_id"])].map((y) => {
+                                let c=0;
+                              if(y==x[props.tableNames[key]]){
+                                c++;
+                                return <option key={x["_id"]} selected>{y}</option>;
+                            }
+                              else 
+                              return <option key={x["_id"]}>{y}</option>;
                             })}
                           </select>
                           
