@@ -14,3 +14,29 @@ Explore various ways to integrate backend and frontend technologies and decide t
 ### 3. What tasks are blocked waiting on another team member?
 
 No blockers.
+
+## Sprint 2 ( 26th September, 2022 - 9th October , 2022)
+
+### 1. What tasks did I work on?
+
+Creating the layout for the application with the routing from different components involved in the application. Also designed the home page and navigation feature and login authentication. Component of focus was airport employee dashboard.
+
+### 2. What am I planning to work on next?
+To work on the gate management i.e when the airport employee tries to update the baggage belt for a flight , handling such events is the focus for next sprint.
+
+### 3. What tasks are blocked waiting on another team member?
+
+No blockers.
+
+## Sprint 3 ( 10th October, 2022 - 23rd October , 2022)
+
+### 1. What tasks did I work on?
+
+Worked on the gate management i.e when the airport employee tries to update the baggage belt for a flight , handling such events is the focus for next sprint.
+
+### 2. What am I planning to work on next?
+To work on gate maintanance and handling the gate details of the airport from airport employee login.
+
+### 3. What tasks are blocked waiting on another team member?
+
+No blockers.
