@@ -8,12 +8,14 @@ const loginController = require('../controller/loginController');
 const availableGates = require('../controller/occupiedGatesBeltsController');
 
 
-router.get('/flightScheduleDetails', flightScheduleControllers.getFlightSchedule)
+router.post('/flightScheduleDetails', flightScheduleControllers.getFlightSchedule)
 
 router.post('/login', loginController.logIn)
 
 router.post('/availableGates', availableGates.getAvailableGateBelt)
 
 router.post('/postData',availableGates.pushData)
+
+router.post('/updateflightScheduleGate', flightScheduleControllers.updateFlightSchedule)
 
 module.exports = router;
