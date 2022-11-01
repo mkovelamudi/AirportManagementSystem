@@ -1,6 +1,6 @@
 const userModel = require('../models/occupiedGates&Belts');
 const userModelTerminal = require('../models/terminalGatesSchema');
-
+const commonLogic = require('../Util/util')
 
 exports.getAvailableGateBelt = async (req, res) => {
 
@@ -8,24 +8,11 @@ exports.getAvailableGateBelt = async (req, res) => {
         resDate = req.body.date
         resTerminal = req.body.terminal
         type = req.body.type
-        const occupiedData = await userModel.find({"endTime":{$gte : resDate}, "startTime":{$lte : resDate} })
-        const terminalData = await userModelTerminal.find({'terminal':resTerminal})
-        if(type == 'gate'){
-            temp = []
-            occupiedData.forEach(element => {
-            temp.push(element.gate)
-            })
-            diff = (terminalData[0].gate).filter(x => !temp.includes(x))
-            return res.json(diff)
+        const data = await commonLogic(resDate, resTerminal, type)
+        if(data == 'server error'){
+            return res.status(500).send("Server error")
         }
-        else if(type == 'belt'){
-            temp = []
-            occupiedData.forEach(element => {
-                temp.push(element.belt)
-                })
-            diff = (terminalData[0].belt).filter(x => !temp.includes(x))
-            return res.json(diff)
-        }
+        return res.json(data)
         
     }
     catch(err){

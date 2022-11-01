@@ -58,6 +58,7 @@ function App() {
             <Route path="AirportEmp" element={<AirportEmployeeDash />} />
             <Route path="AirlinesAtSffo" element={<Airlines />} />
             <Route path="FlightSchedules" element={<FlightSchedules />} />
+            <Route path="AirlineEmp" element={<AirlineEmployeeDash />} />
           </Route>
         </Routes>
       </BrowserRouter>
