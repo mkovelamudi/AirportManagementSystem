@@ -15,6 +15,7 @@ import moment from "moment";
 import "./AirportEmployee.css";
 import { json } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
+import Profile from "./Profile";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -277,7 +278,7 @@ export default function EmployeeTabs() {
         </div>
       </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <Profile/>
       </TabPanel>
     </Box>
   );

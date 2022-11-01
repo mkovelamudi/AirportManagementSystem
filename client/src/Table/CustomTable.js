@@ -49,6 +49,7 @@ function CustomeTable(props) {
 
 const handleStatusChange=(row,value)=>{
     console.log(row,value)
+    // add api for the status change in the gate management tab of the airport employee
 }
 
   const baggageChange=(e,x)=>{

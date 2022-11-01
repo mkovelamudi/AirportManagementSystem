@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
-
+import moment from "moment";
 
 import "./Home.css";
 class Home extends Component {
+  
+  
   state = {};
   render() {
     return (
@@ -13,7 +15,7 @@ class Home extends Component {
           <div className="row" style={{padding:"20px"}}>
             <div className="col-sm">
               <div className="homeDivWelcome">
-                <div class="subhead">September 21, 2022 07:07 PM 18°C 64°F</div>
+                <div class="subhead">{moment().format("DD-MM-YYYY hh:mm:ss")} 18°C 64°F</div>
                 <div class="welcomeHeadline">Welcome</div>
                 <div class="subhead">
                   to San Fred Joneshon International Airport
