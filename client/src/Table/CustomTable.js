@@ -1,7 +1,7 @@
 import React, { Component, useEffect, useState } from "react";
 import "./CustomTable.css";
 import axios from "axios";
-
+import Dropdown from "./Dropdown";
 //for snack bar
 import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
@@ -47,7 +47,9 @@ function CustomeTable(props) {
     </React.Fragment>
   );
 
-
+const handleStatusChange=(row,value)=>{
+    console.log(row,value)
+}
 
   const baggageChange=(e,x)=>{
     console.log("baggage changed")
@@ -139,7 +141,11 @@ function CustomeTable(props) {
                         key == "From" ||
                         key == "Baggage Collection")
                     ) {
-                    } else if (
+                    } 
+                    else if (key=='Status'){
+                        return(<td><Dropdown value={x[props.tableNames[key]]} row={x} handleStatusChange={handleStatusChange}/></td>)
+                    }
+                    else if (
                       !props.FromAirport &&
                       (key == "Departs" || key == "To")
                     ) {

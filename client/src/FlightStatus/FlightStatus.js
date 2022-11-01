@@ -299,7 +299,7 @@ export default function EmployeeTabs() {
                   // value=""
                 />
               </div>
-              <div class="_globalFilter_6uyzw_11 Date_Picker">
+              {/* <div class="_globalFilter_6uyzw_11 Date_Picker">
                 <label for="flightsGlobalSearch" class="_filterLabel_6uyzw_46">
                   Date :{" "}
                 </label>
@@ -308,12 +308,12 @@ export default function EmployeeTabs() {
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
                 />
-              </div>
+              </div> */}
               <div></div>
             </div>
 
             {/* Preffered Airlines */}
-            <div
+            {/* <div
               class="_filterBarLine_6uyzw_5 _additionalFiltersSection_6uyzw_152"
               id="additional-options"
             >
@@ -343,7 +343,7 @@ export default function EmployeeTabs() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
           </form>
         </div>
         {/* Table code for flight shedule */}
