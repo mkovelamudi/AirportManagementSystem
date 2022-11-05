@@ -70,3 +70,31 @@ exports.updateFlightSchedule = async (req, res) => {
         return res.status(500).send("Server error")
     }
 }
+
+exports.getAirlineFlights = async (req,res) => {
+
+    try{
+       const email = "Qatar"
+
+       const date = moment(req.body.date).format('YYYY-MM-DD');
+        
+        var startDate = moment(new Date()).format('YYYY-MM-DD')
+        var endDate =  moment(startDate, 'YYYY-MM-DD').add(1,'days').format('YYYY-MM-DD')
+
+        if(date){
+            console.log(2)
+            startDate = new Date(date)
+            endDate = new Date(new Date(date).getTime() + 1000 * 86400)
+        }
+        const data1 = await userModel.find({"airline":email,"arrives": {$gte : startDate, $lt: endDate},"departs": {$gte : startDate, $lt: endDate}});
+        
+            
+        if(data1){
+            return res.json(data1)
+            }
+        return res.json({})
+        }  
+    catch(error){
+        return res.status(500).send("Server error")
+    }
+}
