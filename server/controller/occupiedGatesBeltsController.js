@@ -1,18 +1,20 @@
 const userModel = require('../models/occupiedGates&Belts');
 const userModelTerminal = require('../models/terminalGatesSchema');
-const commonLogic = require('../Util/util')
+const utilLogic = require('../Util/util');
+const userModelGateState = require('../models/gateStateSchema');
 
-exports.getAvailableGateBelt = async (req, res) => {
+exports.getAvailableGatesBelts = async (req, res) => {
 
     try{
         resDate = req.body.date
         resTerminal = req.body.terminal
         type = req.body.type
-        const data = await commonLogic(resDate, resTerminal, type)
-        if(data == 'server error'){
+        const getGateBeltData = await utilLogic.getGateBelt(resDate, resTerminal, type)
+
+        if(getGateBeltData == 'server error'){
             return res.status(500).send("Server error")
         }
-        return res.json(data)
+        return res.json(getGateBeltData)
         
     }
     catch(err){
