@@ -6,7 +6,7 @@ const utilLogic = require("../Util/util");
 
 exports.allGateStatus = async (req, res) => {
   try {
-    const data = await userModelGateState.find({ status: "Active" });
+    const data = await userModelGateState.find();
 
     if (data) {
       return res.json(data);

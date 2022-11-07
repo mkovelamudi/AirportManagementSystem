@@ -49,6 +49,16 @@ function CustomeTable(props) {
 
 const handleStatusChange=(row,value)=>{
     console.log(row,value)
+    axios.post('/all/updateGatestate',{
+      id:row._id,
+      terminal:row.terminal,
+      gate:row.gate,
+      state:value 
+    }).then((res)=>{
+      props.startUpCall()
+      console.log(res)
+      
+  })
     // add api for the status change in the gate management tab of the airport employee
 }
 
@@ -75,7 +85,7 @@ const handleStatusChange=(row,value)=>{
     var terminal=x.terminal;
     var Type="belt";
     axios
-      .post("/all/availableGates", {
+      .post("/all/availableGatesBelts", {
         date: time,
         terminal: terminal,
         type: Type,
@@ -124,7 +134,7 @@ const handleStatusChange=(row,value)=>{
             }
            
             else{
-                if((x["airline"] && x["airline"].toLowerCase().includes(props.searchData.toLowerCase())) || ((x["Terminal"] && x["Terminal"]==props.searchData)))
+                if((x["airline"] && x["airline"].toLowerCase().includes(props.searchData.toLowerCase())) || ((x["terminal"] && x["terminal"]==props.searchData)))
                     return x;
             }
           }).map((x) => {

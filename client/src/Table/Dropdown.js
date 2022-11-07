@@ -1,20 +1,21 @@
 import React, { Component ,useState} from 'react';
+import './CustomTable.css'
 function Dropdown(props) {
     const [showDrop,setShowDrop]=useState(false);
     const handleChange=(e)=>{
-        console.log(e.target.value)
+        console.log("targert value of drop down",e.target.value)
         props.handleStatusChange(props.row,e.target.value)
     }
     return <>
     
     { 
         showDrop==false ?
-        <td onDoubleClick={()=>setShowDrop(!showDrop)}>{props.value}</td>
+        <td onDoubleClick={()=>setShowDrop(!showDrop)} ><span className={props.value=="Active" ?"ActiveClass":"InactiveClass"}>{props.value}</span></td>
         :<select onChange={(e)=>handleChange(e)}>
-           { props.value=="Open" && <option selected>Open</option>}
-           { props.value=="Open" && <option >Close</option>}
-            {props.value=="Close" && <option selected>Close</option>}
-            {props.value=="Close" && <option >Open</option>}
+           { props.value=="Active" && <option selected>Active</option>}
+           { props.value=="Active" && <option >Inactive</option>}
+            {props.value=="Inactive" && <option selected>Inactive</option>}
+            {props.value=="Inactive" && <option >Active</option>}
 
 
         </select>

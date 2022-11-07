@@ -174,11 +174,20 @@ export default function EmployeeTabs() {
   const [searchData,setSearchData]=useState();
 
   useEffect(() => {
-    axios.get("/all/flightScheduleDetails").then((res) => {
+    fetchData()
+    // will un comment for demo purpose
+    // const interval = setInterval(() => {
+    //   fetchData();
+    //  },6000);
+    //  return () => clearInterval(interval);
+    
+  }, []);
+  const fetchData=()=>{
+    axios.post("/all/flightScheduleDetails").then((res) => {
       console.log(res);
       setFlightData(res.data);
     });
-  }, []);
+  }
 
   //   const scheduleTableNames=["Flight No","Airline","From","To","Departs","Arrives","Terminal","Gate","Baggage Collection"]
   const scheduleTableNames = {
