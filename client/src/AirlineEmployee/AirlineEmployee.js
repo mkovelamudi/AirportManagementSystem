@@ -16,7 +16,9 @@ function AirlineEmployeeDash() {
 
   useEffect(() => {
     const auth = JSON.parse(localStorage.getItem("auth"));
-    console.log(auth);
+    console.log("Airline Employee")
+    console.log(auth)
+    const email = auth.employees[0].userName.split('@')[1].split(".")[0];
     if (auth && auth.employees[0].isLogged) {
     } else {
       navigate("/Login");

@@ -5,11 +5,25 @@ table {
   }
   
   td, th {
-    border: 1px solid #dddddd;
+    /* border: 1px solid #dddddd; */
     text-align: left;
     padding: 8px;
   }
   
   tr:nth-child(even) {
     background-color: #dddddd;
+  }
+
+  .ActiveClass{
+    border: 1px solid green;
+    color: green;
+    border-radius: 5px;
+    padding: 5px;
+  }
+
+  .InactiveClass{
+    border: 1px solid red;
+    color: red;
+    border-radius: 5px;
+    padding: 5px;
   }

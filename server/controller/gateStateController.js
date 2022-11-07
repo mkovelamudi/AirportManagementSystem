@@ -1,54 +1,43 @@
-const userModel = require("../models/gateStateSchema");
-const userModelSchedule = require("../models/ScheduledFlight");
+const userModelGateState = require("../models/gateStateSchema");
+const userModelScheduledFlights = require("../models/ScheduledFlight");
 const userModelAvailableGates = require("../models/occupiedGates&Belts");
 const userModelTerminal = require("../models/terminalGatesSchema");
-const commonLogic = require("../Util/util");
+const utilLogic = require("../Util/util");
 
-exports.activegatestate = async (req, res) => {
+exports.allGateStatus = async (req, res) => {
   try {
-    const data = await userModel.find({ status: "Active" });
+    const data = await userModelGateState.find();
 
     if (data) {
       return res.json(data);
     }
     return res.json({});
-  } catch (err) {
+  } 
+  catch (err) {
     return res.status(500).send("Server error");
   }
 };
 
-exports.updategatestate = async (req, res) => {
+
+exports.updateGateState = async (req, res) => {
   try {
-    const terminal = req.body.terminal;
-    const gate = req.body.gate;
+    const object_id = req.body.id;
+    const resTerminal = req.body.terminal;
+    const resGate = req.body.gate;
     const state = req.body.state;
+    
+    await userModelGateState.updateOne({ _id: object_id },{ $set: { status: state } });
 
-    await userModel.updateOne(
-      { terminal: terminal, gate: gate },
-      { $set: { status: state } }
-    );
-
-    const scheduleData = await userModelSchedule.findOne({
-      terminal: terminal,
-      gate: gate,
-    });
-
-    if (scheduleData.type == "arrival") {
-      const availableGates = await commonLogic(
-        scheduleData.arrives,
-        scheduleData.terminal,
-        scheduleData.gate
-      );
-    } else if (scheduleData.type == "departure") {
-      const availableGates = await commonLogic(
-        scheduleData.departs,
-        scheduleData.terminal,
-        scheduleData.gate
-      );
+    const scheduleData = await userModelScheduledFlights.findOne({terminal: resTerminal,gate: resGate,});
+  
+    if (scheduleData){
+      const avaialbleGates = await utilLogic.getGateBelt(scheduleData.departs, scheduleData.terminal, 'gate')
+      await userModelScheduledFlights.updateOne({_id: scheduleData._id}, {$set: {gate: avaialbleGates[0]}});
     }
 
     return res.status(200).send("Updated SuccessFully");
-  } catch (err) {
+  } 
+  catch (err) {
     return res.status(500).send("Server error");
   }
 };

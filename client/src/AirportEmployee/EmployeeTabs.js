@@ -60,19 +60,27 @@ export default function EmployeeTabs() {
   const [flightData,setFlightData]=useState();
   const [searchData,setSearchData]=useState();
   const [terminalData,setTerminalData]=useState();
-
+  const [gateData,setGateData]=useState();
 
   useEffect(() => {
+    startUpCall()
+    
+  },[]);
+
+  const startUpCall=()=>{
     axios.post('/all/flightScheduleDetails').then((res)=>{
         console.log(res)
         setFlightData(res.data);
     })
-  },[]);
-
+    axios.get('/all/allGateStatus').then((res)=>{
+        console.log(res)
+        setGateData(res.data);
+    })
+  }
 
 //   const scheduleTableNames=["Flight No","Airline","From","To","Departs","Arrives","Terminal","Gate","Baggage Collection"]
   const scheduleTableNames={"Flight No":"flightNumber","Airline":"airline","From":"arrival","To":"departingTo","Departs":"departs","Arrives":"arrives","Terminal":"terminal","Gate":"gate","Baggage Collection":"baggageCollection"}
-  const gateTableNames={"Terminal":"Terminal","GateNumber":"GateNumber","Status":"Status"}
+  const gateTableNames={"Terminal":"terminal","GateNumber":"gate","Status":"status"}
 
   const tmpDepartures={"flightno":"avc","airline":"abc","from":"test1","to":"test2","departs":"00:00","arrives":"00:00","terminal":"1","gate":"A1","baggage":"2"}
   const tmpTerminal={"Terminal":"1","GateNumber":"A1","Status":"Open"}
@@ -235,7 +243,7 @@ export default function EmployeeTabs() {
           </form>
         </div>
         {/* Table code for flight shedule */}
-        <CustomeTable tableNames={scheduleTableNames} type={"Airport"} baggageChangeHandler={baggageChangeHandler} FromAirport={FromAirport} data={flightData} FlightDetails={true} searchData={searchData}/>
+        <CustomeTable tableNames={scheduleTableNames} startUpCall={startUpCall} type={"Airport"} baggageChangeHandler={baggageChangeHandler} FromAirport={FromAirport} data={flightData} FlightDetails={true} searchData={searchData}/>
 
       </TabPanel>
       <TabPanel value={value} index={1}>
@@ -265,16 +273,16 @@ export default function EmployeeTabs() {
                       onChange={(e)=>changeTerminal(e)}
                     >
                       <option value="All">All</option>
-                      <option value="1">Terminal 1</option>
-                      <option value="2">Terminal 2</option>
-                      <option value="3">Terminal 3</option>
+                      <option value="T1">Terminal 1</option>
+                      <option value="T2">Terminal 2</option>
+                      <option value="T3">Terminal 3</option>
                     </select>
                   </div>
                 </div>
               </div>
             </div>
             <br></br>
-            <CustomeTable tableNames={gateTableNames} FromAirport={false} baggageChangeHandler={baggageChangeHandler} type={"Airport"} data={jsonTmp1.tableListTmp} FlightDetails={false} searchData={terminalData}/>
+            <CustomeTable tableNames={gateTableNames} startUpCall={startUpCall} FromAirport={false} baggageChangeHandler={baggageChangeHandler} type={"Airport"} data={gateData} FlightDetails={false} searchData={terminalData}/>
         </div>
       </TabPanel>
       <TabPanel value={value} index={2}>

@@ -12,8 +12,8 @@ function AddDeleteTableRows(){
             Flight_number:'',
             Source:'',
             Destiantion:'',
-            Terminal:'',
-            Gate:'',
+            DepartureTime:'',
+            ArrivalTime:'',
             Status:''  
         } 
         setRowsData([...rowsData, rowsInput])
@@ -31,9 +31,7 @@ function AddDeleteTableRows(){
     const rowsInput = [...rowsData];
     rowsInput[index][name] = value;
     setRowsData(rowsInput);
-  
- 
- 
+
 }
     return(
         <div className="airline_table">
@@ -44,8 +42,8 @@ function AddDeleteTableRows(){
                           <th>Flight Number</th>
                           <th>Source</th>
                           <th>Destiantion</th>
-                          <th>Terminal</th>
-                          <th>Gate</th>
+                          <th>Departure Time</th>
+                          <th>Arrival Time</th>
                           <th>Status</th>
                           <th><button className="btn btn-outline-success" onClick={addTableRows} >+</button></th>
                       </tr>
