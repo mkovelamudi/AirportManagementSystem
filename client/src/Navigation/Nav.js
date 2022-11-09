@@ -81,11 +81,11 @@ class Nav extends Component {
               </li>
               <li class="nav-item dropdown"></li>
 
-              <li class="nav-item">
+              {/* <li class="nav-item">
                 <a class="nav-link disabled" href="#">
                   Disabled
                 </a>
-              </li>
+              </li> */}
             </ul>
           </div>
           {/* <button
