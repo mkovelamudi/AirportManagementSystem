@@ -33,7 +33,7 @@ function Profile() {
                 style={{ paddingTop: "20px", textAlign: "left" }}
               >
                 <div className="row">
-                  <h3 style={{ color: "#434343" }}>Andy Parker</h3>
+                  <h3 style={{ color: "#434343" }}>Vamshidhar P</h3>
                 </div>
                 <div className="row">
                   <h6 style={{ color: "#434343" }}>Airport Authority</h6>
@@ -41,7 +41,7 @@ function Profile() {
               </div>
             </div>
 
-            <Fields rowName={"Email"} rowValue={"abc@gmail.com"}/>
+            <Fields rowName={"Email"} rowValue={"vamshidhar199@gmail.com"}/>
             <Fields rowName={"Phone"} rowValue={"430 439 5672"}/>
             <Fields rowName={"Address"} rowValue={"300 First St, San Jose , CA"}/>
             <Fields rowName={"ID"} rowValue={"*******3456"}/>

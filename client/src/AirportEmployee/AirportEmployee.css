@@ -25,12 +25,13 @@
     width: 50%;
 }
 
+
 .react-datepicker-wrapper {
     display: inline-block;
     padding: 0;
-    border: 0;
-    width: 60%;
-    margin-left: -70px;
+    border: 0 !important;
+    width: 60% !important;
+    margin-left: -160px !important;
 }
 
 .react-datepicker__input-container input[type=text]{

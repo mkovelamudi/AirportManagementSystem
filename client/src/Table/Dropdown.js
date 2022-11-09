@@ -11,7 +11,7 @@ function Dropdown(props) {
     { 
         showDrop==false ?
         <td onDoubleClick={()=>setShowDrop(!showDrop)} ><span className={props.value=="Active" ?"ActiveClass":"InactiveClass"}>{props.value}</span></td>
-        :<select onChange={(e)=>handleChange(e)}>
+        :<select id="select" onChange={(e)=>handleChange(e)}>
            { props.value=="Active" && <option selected>Active</option>}
            { props.value=="Active" && <option >Inactive</option>}
             {props.value=="Inactive" && <option selected>Inactive</option>}

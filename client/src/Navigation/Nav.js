@@ -67,7 +67,7 @@ class Nav extends Component {
                     >
                       <li class="sub-menu"> Schedules</li>
                     </Link>
-                    <Link
+                    {/* <Link
                       onClick={() => {
                         this.props.change("Flight");
                       }}
@@ -75,7 +75,7 @@ class Nav extends Component {
                       to="/AirlinesAtSffo"
                     >
                       <li class="sub-menu">Airlines</li>
-                    </Link>
+                    </Link> */}
                   </ul>
                 </li>
               </li>
