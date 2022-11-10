@@ -2,11 +2,31 @@ import React, { Component, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 function LoginComponent(props) {
   // for navigation redirection
   const navigate = useNavigate();
   const [role, setRole] = useState(null);
+
+  const [open, setOpen] = React.useState(false);
+  const handleClick = () => {
+    setOpen(true);
+  };
+  const vertical= 'top'
+   const horizontal= 'center'
+  const Alert = React.forwardRef(function Alert(props, ref) {
+    return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+  });
+
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setOpen(false);
+  };
 
   useEffect(() => {
     const auth = JSON.parse(localStorage.getItem("auth"));
@@ -71,10 +91,14 @@ function LoginComponent(props) {
           props.changeLogged(true);
           navigateToRole(response.data.type);
           return true;
-        } else return false;
+        } else {
+        handleClick();
+          return false;
+        };
       })
       .catch((error) => {
         console.log(error);
+        handleClick()
         return false;
       });
   }
@@ -94,6 +118,22 @@ function LoginComponent(props) {
 
   return (
     <>
+    {/* <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+          Invalid credentials
+        </Alert>
+        </Snackbar> */}
+        <Snackbar
+        anchorOrigin={{ vertical, horizontal }}
+        open={open}
+        autoHideDuration={6000}
+        onClose={handleClose}
+       
+        key={vertical + horizontal}><Alert onClose={handleClose} severity="error" sx={{ width: '100%' }}>
+        Invalid credentials
+      </Alert>
+      </Snackbar>
+      
       <div className="LoginComponent">
         <section class="vh-100">
           <div class="container-fluid h-custom">
