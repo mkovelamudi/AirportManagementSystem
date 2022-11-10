@@ -132,6 +132,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import "./Flight.css";
 import { json } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -172,8 +174,29 @@ export default function EmployeeTabs() {
   const [FromAirport, setFromAirport] = useState(true);
   const [flightData, setFlightData] = useState();
   const [searchData,setSearchData]=useState();
+  const [count,setCount]=useState(0);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
+    if(count==0){
+      console.log(searchParams.get("value"))
+      setSearchData(searchParams.get("value"))
+      document.getElementById("flightsGlobalSearch").value=searchParams.get("value")
+      
+      if(searchParams.get("type")=='departure')
+      {
+      document.getElementById("flight_kind0").checked=true;
+      document.getElementById("flight_kind1").checked=false;
+      setFromAirport(true);
+
+      }
+      else{
+        document.getElementById("flight_kind1").checked=true;
+      document.getElementById("flight_kind0").checked=false;
+      setFromAirport(false);
+      }
+
+    }
     fetchData()
     // will un comment for demo purpose
     // const interval = setInterval(() => {

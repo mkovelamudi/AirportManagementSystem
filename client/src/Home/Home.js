@@ -1,13 +1,32 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { BsFillArrowRightCircleFill } from 'react-icons/bs';
 import moment from "moment";
+import { useNavigate } from "react-router-dom";
 
 import "./Home.css";
-class Home extends Component {
+function Home() {
+  const navigate = useNavigate();
   
-  
-  state = {};
-  render() {
+
+    const searchHandler=(e)=>{
+      // setTimeout(() => {
+      //   console.log('====>', e.target.value)
+        
+      // }, 1000)
+      if(e.keyCode == 13)
+      {console.log('====>', e.target.value)
+      let type;
+      if(document.getElementById('arrival').checked)
+      {
+          type="arrival"
+      }
+      else{
+        type="departure"
+      }
+      navigate('/Flight?value='+e.target.value+"&type="+type)
+
+    }
+    }
     return (
       <div className="container-fluid">
         <div className="banner"></div>
@@ -32,12 +51,12 @@ class Home extends Component {
                         <div className="col-sm" style={{display:"flex"}}>
                   <label class="container radio">
                     Arrival
-                    <input type="radio" checked="checked" name="radio" />
+                    <input type="radio"  name="radio" id="arrival" />
                     <span class="checkmark"></span>
                   </label>
                   <label class="container radio">
                     Departure
-                    <input type="radio" checked="checked" name="radio" />
+                    <input type="radio" checked="checked" id="departure" name="radio"  />
                     <span class="checkmark"></span>
                   </label>
                   </div>
@@ -45,7 +64,7 @@ class Home extends Component {
                 </div>
               </div>
               <div className="row">
-              <input type="text" className="search" placeholder="Enter destination, airline, or flight #"/>
+              <input type="text" className="search" onKeyDown={(e)=>searchHandler(e)} placeholder="Enter destination, airline, or flight #"/>
               </div>
             </div>
           </div>
@@ -70,6 +89,6 @@ class Home extends Component {
       </div>
     );
   }
-}
+
 
 export default Home;

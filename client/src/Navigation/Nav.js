@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { Outlet, Link } from "react-router-dom";
 import "./Nav.css";
-class Nav extends Component {
-  state = {};
-  change = (name) => {
+function Nav(props) {
+  
+  const change = (name) => {
     console.log(name);
   };
-  render() {
+  
     return (
       <div className="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light navBackground">
@@ -30,7 +30,7 @@ class Nav extends Component {
               <li class="nav-item ">
                 <Link
                   onClick={() => {
-                    this.props.change("Home");
+                    props.change("Home");
                   }}
                   class="nav-link"
                   to="/"
@@ -50,7 +50,7 @@ class Nav extends Component {
                     {/* <li>  */}
                     <Link
                       onClick={() => {
-                        this.props.change("Flight");
+                        props.change("Flight");
                       }}
                       class="nav-link"
                       to="/Flight"
@@ -60,7 +60,7 @@ class Nav extends Component {
 
                     <Link
                       onClick={() => {
-                        this.props.change("Flight");
+                        props.change("Flight");
                       }}
                       class="nav-link"
                       to="/FlightSchedules"
@@ -104,14 +104,14 @@ class Nav extends Component {
                       .isLogged
                   ) {
                     localStorage.removeItem("auth");
-                    this.props.changeLogged(false);
+                    props.changeLogged(false);
                   }
-                  this.props.change("LogIn");
+                  props.change("LogIn");
                 }}
                 class="nav-link navButton"
                 to="/LogIn"
               >
-                {this.props.logged || localStorage.getItem("auth")
+                {props.logged || localStorage.getItem("auth")
                   ? "Log Out"
                   : "Log In"}
               </Link>
@@ -122,6 +122,6 @@ class Nav extends Component {
       </div>
     );
   }
-}
+
 
 export default Nav;
