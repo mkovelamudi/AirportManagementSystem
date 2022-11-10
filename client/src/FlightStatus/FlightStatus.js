@@ -195,7 +195,7 @@ export default function EmployeeTabs() {
       document.getElementById("flight_kind0").checked=false;
       setFromAirport(false);
       }
-
+      setCount(1)
     }
     fetchData()
     // will un comment for demo purpose
