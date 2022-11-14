@@ -59,7 +59,7 @@ exports.getAirlineFlights = async (req,res) => {
             startDate = new Date(date)
             endDate = new Date(new Date(date).getTime() + 1000 * 86400)
         }
-        const data1 = await userModel.find({"airline":email,"arrives": {$gte : startDate, $lt: endDate},"departs": {$gte : startDate, $lt: endDate}});
+        const data1 = await userModel.find({"airline":email});
         
             
         if(data1){
