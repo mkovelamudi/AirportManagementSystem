@@ -115,3 +115,20 @@ exports.pushNewScheduleFlights = async (req, res) => {
     return res.status(500).send("Server error");
   }
 };
+
+exports.getAirlineFlights = async (req, res) => {
+  try {
+    console.log(req)
+    const email = req.body.airline;
+    
+    const flights = await userModelScheduledFlights.find({airline:email});
+    
+    if(flights){
+      return res.json(flights);
+    }
+    return res.json({});
+
+  } catch (error) {
+    return res.status(500).send("Server error");
+  }
+};

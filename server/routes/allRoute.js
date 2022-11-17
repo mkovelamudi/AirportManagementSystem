@@ -25,6 +25,8 @@ router.post(
   flightScheduleControllers.updateFlightSchedule
 );
 
+router.get("/getairlineflights", flightScheduleControllers.getAirlineFlights)
+
 router.get("/allGateStatus", gateStateController.allGateStatus);
 
 router.post("/updateGatestate", gateStateController.updateGateState);

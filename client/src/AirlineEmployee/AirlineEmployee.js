@@ -1,12 +1,13 @@
 import React, { Component, useEffect,useState } from "react";
 import Redirect from "../Routes/Redirect";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import TableC from "./../Table/TableC";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import moment from "moment";
 import "./AirlineEmployee.css";
 import AddDeleteTableRows from "./AddDeleteTableRows";
+import axios from "axios";
 
 function AirlineEmployeeDash() {
   const navigate = useNavigate();
@@ -18,11 +19,15 @@ function AirlineEmployeeDash() {
     const auth = JSON.parse(localStorage.getItem("auth"));
     console.log("Airline Employee")
     console.log(auth)
-    const email = auth.employees[0].userName.split('@')[1].split(".")[0];
     if (auth && auth.employees[0].isLogged) {
     } else {
       navigate("/Login");
     }
+    const email = auth.employees[0].userName.split('@')[1].split(".")[0];
+    axios.post('/all/getairlineflights',{airline:email}).then((res)=>{
+      console.log(res)
+      
+  })
   }, []);
   return (
     <>
