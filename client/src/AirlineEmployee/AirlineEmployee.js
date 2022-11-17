@@ -23,8 +23,24 @@ function AirlineEmployeeDash() {
     } else {
       navigate("/Login");
     }
-    const email = auth.employees[0].userName.split('@')[1].split(".")[0];
-    axios.post('/all/getairlineflights',{airline:email}).then((res)=>{
+    var email = auth.employees[0].userName.split('@')[1].split(".")[0];
+    var airline = "";
+    switch (email) {
+      case "qatar":
+        airline = "Qatar Airways";
+        break;
+      case "emirates":
+        airline = "Emirates";
+        break;
+      case "airindia":
+        airline = "Air India";
+        break;
+      default:
+        airline = email;
+        break;
+    }
+    console.log(airline)
+    axios.post('/all/getairlineflights',{airline:airline}).then((res)=>{
       console.log(res)
       
   })
