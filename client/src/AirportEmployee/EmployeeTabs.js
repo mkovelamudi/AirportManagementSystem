@@ -79,7 +79,7 @@ export default function EmployeeTabs() {
   }
 
 //   const scheduleTableNames=["Flight No","Airline","From","To","Departs","Arrives","Terminal","Gate","Baggage Collection"]
-  const scheduleTableNames={"Flight No":"flightNumber","Airline":"airline","From":"arrival","To":"departingTo","Departs":"departs","Arrives":"arrives","Terminal":"terminal","Gate":"gate","Baggage Collection":"baggageCollection"}
+  const scheduleTableNames={"Flight No":"flightNumber","Airline":"airline","From":"arrivingFrom","To":"departingTo","Departs":"departs","Arrives":"arrives","Terminal":"terminal","Gate":"gate","Baggage Collection":"baggageCollection"}
   const gateTableNames={"Terminal":"terminal","GateNumber":"gate","Status":"status"}
 
   const tmpDepartures={"flightno":"avc","airline":"abc","from":"test1","to":"test2","departs":"00:00","arrives":"00:00","terminal":"1","gate":"A1","baggage":"2"}

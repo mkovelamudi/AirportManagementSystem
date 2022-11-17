@@ -216,7 +216,7 @@ export default function EmployeeTabs() {
   const scheduleTableNames = {
     "Flight No": "flightNumber",
     Airline: "airline",
-    From: "arrival",
+    From: "arrivingFrom",
     To: "departingTo",
     Departs: "departs",
     Arrives: "arrives",
