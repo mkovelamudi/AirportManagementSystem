@@ -11,9 +11,7 @@ import axios from "axios";
 
 function AirlineEmployeeDash() {
   const navigate = useNavigate();
-
-
-  
+  const [flights,setflights]=useState();
 
   useEffect(() => {
     const auth = JSON.parse(localStorage.getItem("auth"));
@@ -41,9 +39,13 @@ function AirlineEmployeeDash() {
     }
     console.log(airline)
     axios.post('/all/getairlineflights',{airline:airline}).then((res)=>{
-      console.log(res)
-      
+      console.log("fetched data from API")
+      console.log(res.data)
+      setflights(res.data)
+      console.log(flights)
+    
   })
+  
   }, []);
   return (
     <>
@@ -84,7 +86,7 @@ function AirlineEmployeeDash() {
         <input type="button" value="Delete" class="delete" onclick="delete_row('1')"/>
         </td>
         </tr> */}
-        <AddDeleteTableRows />
+       {flights!=null&& <AddDeleteTableRows flights={flights}  />}
       
     </div>
     

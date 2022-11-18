@@ -1,13 +1,29 @@
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import TableRows from "./TableRows"
 import "./AirlineEmployee.css";
-function AddDeleteTableRows(){
 
+
+function AddDeleteTableRows(props){
 
     const [rowsData, setRowsData] = useState([]);
- 
+
+    console.log("In AddDelete")
+    console.log(props.flights)
+    // console.log(flight_data[0].flightNumber)
+    // cosnt [initial]
+    useEffect(() => {
+        setRowsData(props.flights)
+      }, []);
+   
+    console.log("setting state")
+    console.log(rowsData)
+    
+    // setRowsData(data)
+    // flights.map((data,index)=>{
+    //     console.log(index)
+    //     console.log(data.flightNumber)
+    // })
     const addTableRows = ()=>{
-  
         const rowsInput={
             Flight_number:'',
             Source:'',
@@ -42,8 +58,8 @@ function AddDeleteTableRows(){
                           <th>Flight Number</th>
                           <th>Source</th>
                           <th>Destiantion</th>
-                          <th>Departure Time</th>
-                          <th>Arrival Time</th>
+                          <th>Departure</th>
+                          <th>Arrival</th>
                           <th>Status</th>
                           <th><button className="btn btn-outline-success" onClick={addTableRows} >+</button></th>
                       </tr>
