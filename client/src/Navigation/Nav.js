@@ -46,7 +46,7 @@ function Nav(props) {
                   </Link> */}
                 <li class="nav-link">
                   Flights
-                  <ul>
+                  <ul style={{backgroundColor:"#5597c8",marginTop:"10px",marginBottom:"-10px"}}>
                     {/* <li>  */}
                     <Link
                       onClick={() => {
