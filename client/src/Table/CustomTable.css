@@ -34,3 +34,6 @@ table {
     padding: 2px;
     border-radius: 5px;
   }
+  th{
+    background: #f3e1ca;
+  }
