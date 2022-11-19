@@ -6,23 +6,11 @@ import "./AirlineEmployee.css";
 function AddDeleteTableRows(props){
 
     const [rowsData, setRowsData] = useState([]);
-
-    console.log("In AddDelete")
-    console.log(props.flights)
-    // console.log(flight_data[0].flightNumber)
-    // cosnt [initial]
     useEffect(() => {
         setRowsData(props.flights)
-      }, []);
+      },[]);
    
-    console.log("setting state")
-    console.log(rowsData)
     
-    // setRowsData(data)
-    // flights.map((data,index)=>{
-    //     console.log(index)
-    //     console.log(data.flightNumber)
-    // })
     const addTableRows = ()=>{
         const rowsInput={
             Flight_number:'',
@@ -42,12 +30,11 @@ function AddDeleteTableRows(props){
    }
  
    const handleChange = (index, evnt)=>{
-    
-    const { name, value } = evnt.target;
+    const name = evnt.target.name
+    const value = evnt.target.value;
     const rowsInput = [...rowsData];
     rowsInput[index][name] = value;
     setRowsData(rowsInput);
-
 }
     return(
         <div className="airline_table">
