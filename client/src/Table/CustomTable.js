@@ -134,7 +134,7 @@ const handleStatusChange=(row,value)=>{
             }
            
             else{
-                if((x["airline"] && x["airline"].toLowerCase().includes(props.searchData.toLowerCase())) || ((x["terminal"] && x["terminal"]==props.searchData)))
+                if((x["airline"] && x["airline"].toLowerCase().includes(props.searchData.toLowerCase())) || (x["flightNumber"] && x["flightNumber"].toLowerCase().includes(props.searchData.toLowerCase())) || ((x["terminal"] && x["terminal"]==props.searchData)))
                     return x;
             }
           }).map((x) => {

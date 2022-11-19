@@ -10,10 +10,13 @@ table {
     padding: 8px;
   }
   
-  tr:nth-child(even) {
+  /* tr:nth-child(even) {
     background-color: #dddddd;
-  }
+  } */
 
+  tr{
+    background-color: #f3eded;
+  }
   .ActiveClass{
     border: 1px solid green;
     color: green;

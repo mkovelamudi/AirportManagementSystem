@@ -51,12 +51,12 @@ function Home() {
                         <div className="col-sm" style={{display:"flex"}}>
                   <label class="container radio">
                     Arrival
-                    <input type="radio"  name="radio" id="arrival" />
+                    <input type="radio" style={{marginLeft:"10px"}} name="radio" id="arrival" />
                     <span class="checkmark"></span>
                   </label>
                   <label class="container radio">
                     Departure
-                    <input type="radio" checked="checked" id="departure" name="radio"  />
+                    <input type="radio" style={{marginLeft:"10px"}} checked="checked" id="departure" name="radio"  />
                     <span class="checkmark"></span>
                   </label>
                   </div>
@@ -64,7 +64,7 @@ function Home() {
                 </div>
               </div>
               <div className="row">
-              <input type="text" className="search" onKeyDown={(e)=>searchHandler(e)} placeholder="Enter destination, airline, or flight #"/>
+              <input type="text" className="search" onKeyDown={(e)=>searchHandler(e)} placeholder="Enter airline, or flight #"/>
               </div>
             </div>
           </div>
