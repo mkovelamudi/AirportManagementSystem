@@ -32,10 +32,23 @@ No blockers.
 
 ### 1. What tasks did I work on?
 
-Worked on the gate management i.e when the airport employee tries to update the baggage belt for a flight , handling such events is the focus for next sprint.
+Worked on the baggage availability management i.e when the airport employee tries to update the baggage belt for a flight. Integrated with the API. Implemented the search and filtering and time based scheduling.
 
 ### 2. What am I planning to work on next?
 To work on gate maintanance and handling the gate details of the airport from airport employee login.
+
+### 3. What tasks are blocked waiting on another team member?
+
+No blockers.
+
+## Sprint 4 ( 24th October, 2022 - 6th November , 2022)
+
+### 1. What tasks did I work on?
+
+Worked on gate maintanance and fixing issue with gate management. Worked on error handling for login component and search redirection for the home page to flight status page. 
+
+### 2. What am I planning to work on next?
+To work on minor fixes with the error handling.
 
 ### 3. What tasks are blocked waiting on another team member?
 
