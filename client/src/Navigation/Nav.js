@@ -10,7 +10,7 @@ function Nav(props) {
     return (
       <div className="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-light bg-light navBackground">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="#" style={{color:"white"}}>
             SFJC Airport
           </a>
           <button
@@ -26,27 +26,29 @@ function Nav(props) {
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto nav-tabs nav">
+            <ul class="navbar-nav mr-auto nav-tabs nav" style={{border: "none",color:"white"}}>
               <li class="nav-item ">
                 <Link
+                style={{color:"white"}}
                   onClick={() => {
                     props.change("Home");
                   }}
                   class="nav-link"
                   to="/"
+                  
                 >
                   Home
                 </Link>{" "}
               </li>
-              <li class="nav-item">
+              <li class="nav-item" style={{border: "none",color:"white"}}>
                 {/* <Link  onClick={() => {
                     this.props.change("Flight");
                   }} class="nav-link" to="/Flight">
                     <li>Flights</li>
                   </Link> */}
-                <li class="nav-link">
+                <li class="nav-link" style={{color:"white"}}>
                   Flights
-                  <ul>
+                  <ul style={{backgroundColor:"#5597c8",marginTop:"10px",marginBottom:"-10px",color:"white"}}>
                     {/* <li>  */}
                     <Link
                       onClick={() => {
@@ -54,8 +56,9 @@ function Nav(props) {
                       }}
                       class="nav-link"
                       to="/Flight"
+                      style={{color:"white"}}
                     >
-                      <li class="sub-menu">Status</li>
+                      <li class="sub-menu" style={{color:"white"}}>Status</li>
                     </Link>
 
                     <Link
@@ -64,8 +67,9 @@ function Nav(props) {
                       }}
                       class="nav-link"
                       to="/FlightSchedules"
+                      style={{color:"white"}}
                     >
-                      <li class="sub-menu"> Schedules</li>
+                      <li class="sub-menu" style={{color:"white"}}> Schedules</li>
                     </Link>
                     {/* <Link
                       onClick={() => {
@@ -95,7 +99,7 @@ function Nav(props) {
               this.props.change("LogIn");
             }}
           > */}
-          <ul class="navbar-nav mr-auto nav-tabs nav">
+          <ul class="navbar-nav mr-auto nav-tabs nav" style={{border: "none",color:"white"}}>
             <li class="nav-item" id={localStorage.getItem("auth")}>
               <Link
                 onClick={() => {
@@ -110,6 +114,7 @@ function Nav(props) {
                 }}
                 class="nav-link navButton"
                 to="/LogIn"
+                style={{color:"white"}}
               >
                 {props.logged || localStorage.getItem("auth")
                   ? "Log Out"

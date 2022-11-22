@@ -63,7 +63,7 @@ class FlightSchedules extends Component {
           {" "}
           Time :{" "}
           <select>
-            <option value="1hr"> Next 1 hr</option>
+            <option value="2hr"> Next 2 hr</option>
             <option value="4hr"> Next 4 hr</option>
             <option value="8hr"> Next 8 hr</option>
           </select>
