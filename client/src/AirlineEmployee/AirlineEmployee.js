@@ -11,9 +11,7 @@ import axios from "axios";
 
 function AirlineEmployeeDash() {
   const navigate = useNavigate();
-
-
-  
+  const [flights,setflights]=useState();
 
   useEffect(() => {
     const auth = JSON.parse(localStorage.getItem("auth"));
@@ -23,11 +21,31 @@ function AirlineEmployeeDash() {
     } else {
       navigate("/Login");
     }
-    const email = auth.employees[0].userName.split('@')[1].split(".")[0];
-    axios.post('/all/getairlineflights',{airline:email}).then((res)=>{
-      console.log(res)
-      
+    var email = auth.employees[0].userName.split('@')[1].split(".")[0];
+    var airline = "";
+    switch (email) {
+      case "qatar":
+        airline = "Qatar Airways";
+        break;
+      case "emirates":
+        airline = "Emirates";
+        break;
+      case "airindia":
+        airline = "Air India";
+        break;
+      default:
+        airline = email;
+        break;
+    }
+    console.log(airline)
+    axios.post('/all/getairlineflights',{airline:airline}).then((res)=>{
+      console.log("fetched data from API")
+      console.log(res.data)
+      setflights(res.data)
+      console.log(flights)
+    
   })
+  
   }, []);
   return (
     <>
@@ -50,25 +68,7 @@ function AirlineEmployeeDash() {
       <input type="text" className="search" placeholder="Search.."></input>
       </div>
       
-        {/* <tr className="airline_row">
-        <th>Flight Number</th>
-        <th>Source</th>
-        <th>Destination</th>
-        <th>Terminal</th>
-        <th>Gate</th>
-        <th>Status</th>
-        <th>Actions</th>
-        </tr>
-        <tr className="airline_row">
-        <td id="name_row1">Ankit</td>
-        <td id="country_row1">India</td>
-        <td id="age_row1">20</td>
-        <td>
-        <input type="button" id="edit_button1" value="Edit" class="edit" onclick="edit_row('1')"/>
-        <input type="button" value="Delete" class="delete" onclick="delete_row('1')"/>
-        </td>
-        </tr> */}
-        <AddDeleteTableRows />
+       {flights!=null&& <AddDeleteTableRows flights={flights}  />}
       
     </div>
     
