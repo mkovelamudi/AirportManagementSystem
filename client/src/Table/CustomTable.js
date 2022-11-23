@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Snackbar from '@mui/material/Snackbar';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import moment from "moment";
 
 function CustomeTable(props) {
   const [options, setOptions] = useState(new Map());
@@ -191,7 +192,9 @@ const handleStatusChange=(row,value)=>{
                           }
                         </td>
                       );
-                    } else return <td>{x[props.tableNames[key]]}</td>;
+                    } else if(key=="Arrives"){return <td>{moment(x[props.tableNames[key]]).format("LLL")}</td>;}
+                    else if(key=="Departs"){return <td>{moment(x[props.tableNames[key]]).format("LLL")}</td>;}
+                    else return <td>{x[props.tableNames[key]]}</td>;
                   })}
                 </tr>
               );
