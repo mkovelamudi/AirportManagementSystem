@@ -253,10 +253,10 @@ export default function EmployeeTabs() {
               id="additional-options"
             >
               <div class="_globalFilter_6uyzw_11 Date_Picker">
-                <label for="flightsGlobalSearch" class="_filterLabel_6uyzw_46">
+                {/* <label for="flightsGlobalSearch" class="_filterLabel_6uyzw_46">
                   Date:{" "}
                 </label>
-                <DatePicker style={{ width:"50%"}}selected={startDate} onChange={(date) => updateDataOnDate(date)} />
+                <DatePicker style={{ width:"50%"}}selected={startDate} onChange={(date) => updateDataOnDate(date)} /> */}
               </div>
               <div class="_airlineFilter_6uyzw_146">
                 <div class="_selectColumnFilter_6uyzw_57">
