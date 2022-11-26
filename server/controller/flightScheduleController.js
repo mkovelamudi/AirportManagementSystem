@@ -7,13 +7,15 @@ exports.getFlightSchedule = async (req, res) => {
   try {
     const date = moment(req.body.date).format("YYYY-MM-DD");
     var startDate = moment(new Date()).format("YYYY-MM-DD");
-    var endDate = moment(startDate, "YYYY-MM-DD").add(1, "days").format("YYYY-MM-DD");
+    var endDate = moment(startDate, "YYYY-MM-DD")
+      .add(1, "days")
+      .format("YYYY-MM-DD");
 
     if (date) {
       startDate = new Date(date);
       endDate = new Date(new Date(date).getTime() + 1000 * 86400);
     }
- 
+
     const data1 = await userModelScheduledFlights.find({
       arrives: { $gte: startDate, $lt: endDate },
       type: "arrival",
@@ -116,50 +118,50 @@ exports.pushNewScheduleFlights = async (req, res) => {
 
 exports.getAirlineFlights = async (req, res) => {
   try {
-    console.log(req)
+    console.log(req);
     const email = req.body.airline;
-    
-    const flights = await userModelScheduledFlights.find({airline:email});
-    
-    if(flights){
+
+    const flights = await userModelScheduledFlights.find({ airline: email });
+
+    if (flights) {
       return res.json(flights);
     }
     return res.json({});
-
   } catch (error) {
     return res.status(500).send("Server error");
   }
 };
 
+exports.getFlightScheduleHourly = async (req, res) => {
+  try {
+    hours = Number(req.body.hours);
 
-exports.getFlightScheduleHourly = async(req,res) =>{
-  try{
-
-    hours = Number(req.body.hours)
-
-    console.log(hours)
-    if(hours){
-      start_date = moment(new Date()).subtract(8, 'hours')
-      end_date = moment(start_date).add(hours,'hours')
+    console.log(hours);
+    if (hours) {
+      start_date = moment(new Date()).subtract(8, "hours");
+      end_date = moment(start_date).add(hours, "hours");
+    } else {
+      start_date = moment(new Date()).format("YYYY-MM-DD");
+      end_date = moment(start_date).add(1, "day");
     }
-    else{
-      start_date = moment(new Date()).format('YYYY-MM-DD')
-      end_date = moment(start_date).add(1,'day')
-    }
-    
-    //console.log(new Date(start_date), new Date(end_date))
-    const data1 = await userModelScheduledFlights.find({type:'arrival', arrives: { $gte: start_date, $lt: end_date }})
 
-    const data2 = await userModelScheduledFlights.find({type:'departure', departs: { $gte: new Date(start_date), $lt: new Date(end_date) }})
-    //console.log(data1.length, data2.length)
+    console.log(new Date(start_date), new Date(end_date));
+    const data1 = await userModelScheduledFlights.find({
+      type: "arrival",
+      arrives: { $gte: start_date, $lt: end_date },
+    });
+
+    const data2 = await userModelScheduledFlights.find({
+      type: "departure",
+      departs: { $gte: new Date(start_date), $lt: new Date(end_date) },
+    });
+    console.log(data1.length, data2.length);
     if (data1 || data2) {
       return res.json(data1.concat(data2));
     }
 
-    return res.json({})
-
-  }
-  catch(err){
+    return res.json({});
+  } catch (err) {
     return res.status(500).send("Server error");
   }
-}
+};

@@ -491,6 +491,22 @@ export default function EmployeeTabs() {
     startUpCall();
   }, []);
 
+  const [timeFrame, setTimeFrame] = useState();
+  const handleSelect = (event) => {
+    console.log(event.target.value);
+    setTimeFrame(event.target.value);
+    if (event.target.value != undefined) {
+      console.log("not undefined");
+      axios
+        .post("/all/flightScheduleHourly", {
+          hours: event.target.value,
+        })
+        .then((res) => {
+          setFlightData(res.data);
+        });
+    }
+  };
+
   const startUpCall = () => {
     axios.post("/all/flightScheduleDetails").then((res) => {
       console.log(res);
@@ -570,9 +586,21 @@ export default function EmployeeTabs() {
   // const changeTerminal = (e) => {
   //   setTerminalData(e.target.value);
   // };
+
+  const [hideTimeFrame, setHideTimeFrame] = useState(false);
+
   const updateDataOnDate = (date) => {
     setStartDate(date);
     console.log(date);
+    console.log("date comparison " + moment(new Date()).isAfter(date));
+    if (moment(new Date()).isSame(date, "day")) {
+      setHideTimeFrame(false);
+    } else if (
+      moment(new Date()).isAfter(date) ||
+      moment(new Date()).isBefore(date)
+    ) {
+      setHideTimeFrame(true);
+    }
     axios
       .post("/all/flightScheduleDetails", {
         date: date,
@@ -674,27 +702,33 @@ export default function EmployeeTabs() {
               id="additional-options"
             >
               <div></div>
-              <div class="_airlineFilter_6uyzw_146">
-                <div class="_selectColumnFilter_6uyzw_57">
-                  <label
-                    for="airline.airline_name"
-                    class="_filterLabel_6uyzw_46"
-                  >
-                    Preferred Airline
-                  </label>
-                  <div class="form-type-select">
-                    <select
-                      name="airline.airline_name"
-                      id="airline.airline_name"
+              {hideTimeFrame == false && (
+                <div class="_airlineFilter_6uyzw_146">
+                  <div class="_selectColumnFilter_6uyzw_57">
+                    <label
+                      for="airline.airline_name"
+                      class="_filterLabel_6uyzw_46"
                     >
-                      <option value="">All Airlines</option>
-                      <option value="Adria Airways">Adria Airways</option>
-                      <option value="AEGEAN AIRLINES">AEGEAN AIRLINES</option>
-                      <option value="Aer Lingus">Aer Lingus</option>
-                    </select>
+                      Select Timeframe
+                    </label>
+                    <div class="form-type-select">
+                      <select
+                        name="airline.airline_name"
+                        id="airline.airline_name"
+                        onChange={(e) => {
+                          handleSelect(e);
+                        }}
+                      >
+                        <option value="">Any</option>
+                        <option value="1">1 HR</option>
+                        <option value="4">4 HR</option>
+                        <option value="8">8 HR</option>
+                        <option value="10">10 HR</option>
+                      </select>
+                    </div>
                   </div>
                 </div>
-              </div>
+              )}
             </div>
           </form>
         </div>
@@ -702,7 +736,7 @@ export default function EmployeeTabs() {
         <CustomeTable
           tableNames={scheduleTableNames}
           startUpCall={startUpCall}
-          type={"Airport"}
+          type={"Customer"}
           // baggageChangeHandler={baggageChangeHandler}
           FromAirport={FromAirport}
           data={flightData}

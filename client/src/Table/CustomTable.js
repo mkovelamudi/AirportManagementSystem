@@ -212,13 +212,17 @@ function CustomeTable(props) {
                       } else if (key == "Arrives") {
                         return (
                           <td>
-                            {moment(x[props.tableNames[key]]).format("LLL")}
+                            {moment(x[props.tableNames[key]]).format(
+                              "MMMM Do YYYY"
+                            )}
                           </td>
                         );
                       } else if (key == "Departs") {
                         return (
                           <td>
-                            {moment(x[props.tableNames[key]]).format("LLL")}
+                            {moment(x[props.tableNames[key]]).format(
+                              "MMMM Do YYYY"
+                            )}
                           </td>
                         );
                       } else return <td>{x[props.tableNames[key]]}</td>;

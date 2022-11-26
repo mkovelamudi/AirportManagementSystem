@@ -3,13 +3,24 @@ import "./FlightSchedules.css";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
-import ScheduleTable from "./ScheduleTable";
+// import ScheduleTable from "./ScheduleTable";
 
 function FlightSchedules(props) {
   const [timeFrame, setTimeFrame] = useState();
   const handleSelect = (event) => {
     console.log(event.target.value);
     setTimeFrame(event.target.value);
+  };
+  const scheduleTableNames = {
+    "Flight No": "flightNumber",
+    Airline: "airline",
+    From: "arrivingFrom",
+    To: "departingTo",
+    Departs: "departs",
+    Arrives: "arrives",
+    Terminal: "terminal",
+    Gate: "gate",
+    "Baggage Collection": "baggageCollection",
   };
   return (
     <div className="search-Flight">
@@ -55,7 +66,7 @@ function FlightSchedules(props) {
         </select>
       </div>
 
-      <ScheduleTable />
+      {/* <ScheduleTable tableNames={scheduleTableNames} /> */}
     </div>
   );
 }
