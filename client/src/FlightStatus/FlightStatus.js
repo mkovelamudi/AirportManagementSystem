@@ -428,7 +428,7 @@
 
 // import * as React from 'react';
 import React, { Component, useEffect, useState } from "react";
-
+import { useSearchParams } from "react-router-dom";
 import CustomeTable from "../Table/CustomTable";
 import axios from "axios";
 import PropTypes from "prop-types";
@@ -486,9 +486,31 @@ export default function EmployeeTabs() {
   const [searchData, setSearchData] = useState();
   const [terminalData, setTerminalData] = useState();
   const [gateData, setGateData] = useState();
+  const [count,setCount]=useState(0);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
+    if(count==0){
+      console.log(searchParams.get("value"))
+      setSearchData(searchParams.get("value"))
+      document.getElementById("flightsGlobalSearch").value=searchParams.get("value")
+
+      if(searchParams.get("type")=='departure')
+      {
+      document.getElementById("flight_kind0").checked=true;
+      document.getElementById("flight_kind1").checked=false;
+      setFromAirport(true);
+
+      }
+      else{
+        document.getElementById("flight_kind1").checked=true;
+      document.getElementById("flight_kind0").checked=false;
+      setFromAirport(false);
+      }
+
+    }
     startUpCall();
+    searchParams.get('sort')
   }, []);
 
   const [timeFrame, setTimeFrame] = useState();
