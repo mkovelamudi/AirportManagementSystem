@@ -164,3 +164,11 @@ form input[type="radio"]:focus {
   padding-left: 50px;
   padding-bottom: 2px;
 }
+
+._globalFilter_6uyzw_11 Date_Picker {
+  margin-left: 40%;
+}
+
+.react-datepicker__input-container {
+  margin-left: 66%;
+}
