@@ -6,21 +6,13 @@ const moment = require("moment");
 
 exports.getGateBelt = async (resDate, resTerminal, type) => {
   try {
-    startTime = moment(resDate).format();
-    endTime = moment(resDate).add(1, "hour");
-    const occupiedData = await userModelScheduledFlights.find({
-      $or: [
-        { arrives: { $gte: endTime, $lte: startTime } },
-        {
-          startTime: {
-            $gte: "arrives",
-            $lte: moment("arrives").add(1, "hour"),
-          },
-        },
-      ],
-      terminal: resTerminal,
-    });
+    
+    startTime = resDate
+    endTime = moment(startTime).add(1, "hour");
+    console.log( startTime, new Date(endTime), endTime)
+    const occupiedData = await userModelScheduledFlights.find({arrives: { $gte :startTime, $lt: new Date(endTime)}, terminal: resTerminal});
 
+    console.log(occupiedData)
     const terminalData = await userModelTerminal.find({
       terminal: resTerminal,
     });
