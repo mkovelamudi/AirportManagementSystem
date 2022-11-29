@@ -3,6 +3,7 @@ import TableRows from "./TableRows"
 import "./AirlineEmployee.css";
 import ReadOnlyRow from "./ReadOnlyRow"
 import moment from "moment";
+import axios from "axios";
 
 
 function AddDeleteTableRows(props){
@@ -45,6 +46,9 @@ function AddDeleteTableRows(props){
         const rows = [...rowsData];
         rows.splice(index, 1);
         setRowsData(rows);
+        axios.post('/all/DeleteScheduleFlights',rowsData[index]).then((res)=>{
+            console.log("Removed Flight")
+            console.log(res.data)})
     }
  
     const handleChange = (index, evnt)=>{
@@ -81,17 +85,32 @@ function AddDeleteTableRows(props){
             departs:moment(editFlightData[index].departs).format("YYYY-MM-DDThh:mm"),
             arrives:moment(editFlightData[index].arrives).format("YYYY-MM-DDThh:mm")
         };
-        console.log("Edited Flight")
-        console.log(editedFlight)
+        // console.log("Edited Flight")
+        // console.log(editedFlight)
         const newFlightData = [...rowsData];
-        console.log("New Flight Data")
-        console.log(newFlightData)
+        // console.log("New Flight Data")
+        // console.log(newFlightData)
         newFlightData[index] = editedFlight;
         console.log("New Flight Data index")
         console.log(newFlightData[index]);
         setRowsData(newFlightData);
-        console.log("Rows Data")
-        console.log(rowsData)
+        const sending = [...rowsData];
+        if(sending[index].hasOwnProperty('_id')){
+            console.log("Updated Flight")
+            axios.post('/all/pushScheduledFlights',sending[index]).then((res)=>{
+                console.log("Updated Flight Data")
+                console.log(res.data)})
+        }
+        else{
+            sending[index]['id']="";
+            sending[index]['airline']="Emirates"
+            axios.post('/all/pushScheduledFlights',sending[index]).then((res)=>{
+                console.log("Added Flight Data")
+                console.log(res.data)})
+        }
+        
+        // console.log("Rows Data")
+        // console.log(rowsData)
         setEditFlightIndex(null);
         // setEditFlightData(addFlightData);
 
@@ -100,15 +119,15 @@ function AddDeleteTableRows(props){
     const handleEditFlightChange = (index,evnt) =>{
         const name = evnt.target.name
         const value = evnt.target.value;
-        // console.log(name)
-        // console.log(value)
-        // console.log(index)
+        console.log(name)
+        console.log(value)
+        console.log(index)
         const newInput = [...rowsData] 
         newInput[index][name]=value
-        // console.log(newInput)
+        console.log(newInput)
         setEditFlightData(newInput)
-        // console.log
-        // console.log(editFlightData)
+        console.log("After setting")
+        console.log(editFlightData)
         
     }
 
