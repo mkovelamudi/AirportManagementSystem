@@ -18,7 +18,7 @@
 
 ## Schedule for Scrum Meetings:
 Saturdays
-
+## Sprint sheet xl file can be found [here](https://docs.google.com/spreadsheets/d/15IUPsQADr-2O5elAtdGqjzlG8GLBCtYsMDQKOzU0jqw/edit?usp=sharing)
 ## Project Board
 [Available here](https://github.com/orgs/gopinathsjsu/projects/29/views/3)
 ## XP Core Values:
