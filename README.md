@@ -26,7 +26,7 @@ Saturdays
 * Simplicity
 
 ## Architecture Diagram
-![202_architecture](https://user-images.githubusercontent.com/99615170/191139157-5f84d716-2d5a-4748-aea7-fee86cff825a.png)
+![202_architecture](https://github.com/gopinathsjsu/team-project-team-mavericks/blob/main/Documentation/Wireframes/202Archit.png)
 
 ##Component Diagram
 ![202_component](https://user-images.githubusercontent.com/99615170/192394406-5c94ce07-c5ef-4eee-ba20-b337312a504d.png)
