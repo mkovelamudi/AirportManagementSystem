@@ -53,3 +53,16 @@ To work on minor fixes with the error handling.
 ### 3. What tasks are blocked waiting on another team member?
 
 No blockers.
+
+## Sprint 5 ( 7th November, 2022 - 25th November , 2022)
+
+### 1. What tasks did I work on?
+
+Worked on error handling and also on the redirections for search and other issues fix in the application before a final deployment to AWS. 
+
+### 2. What am I planning to work on next?
+Looking forward for presentation.
+
+### 3. What tasks are blocked waiting on another team member?
+
+No blockers.
