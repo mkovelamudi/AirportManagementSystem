@@ -45,9 +45,13 @@ function AirlineEmployeeDash() {
       setflights(res.data)
       console.log(flights)
     
-  })
-  
+  });  
   }, []);
+  const [searchData, setSearchData] = useState(null);
+  const Search = (e) => {
+    setSearchData(e.target.value);
+    console.log(e.target.value + "inside set search")
+  };
   return (
     <>
     <div className="AirportEmployee container-fluid">
@@ -56,20 +60,10 @@ function AirlineEmployeeDash() {
         </div>
 
         <div className="radio_search">
-        <label class="airline_radio">
-            Arrival
-            <input type="radio" checked="checked" name="radio" />
-            <span class="checkmark"></span>
-        </label>
-        <label class="airline_radio">
-            Departure
-            <input type="radio" checked="checked" name="radio" />
-            <span class="checkmark"></span>
-        </label>
-      <input type="text" className="search" placeholder="Search.."></input>
+      <input type="text" className="search" placeholder="Search.." onChange={(e)=>Search(e)}></input>
       </div>
       
-       {flights!=null&& <AddDeleteTableRows flights={flights}  />}
+       {flights!=null&& <AddDeleteTableRows flights={flights} searchData={searchData} />}
       
     </div>
     

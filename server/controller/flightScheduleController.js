@@ -50,7 +50,9 @@ exports.updateFlightSchedule = async (req, res) => {
 
 exports.pushNewScheduleFlights = async (req, res) => {
   try {
-    object_id = req.body.id;
+    console.log("In Pushing")
+    console.log(req.body)
+    object_id = req.body._id;
     flightNumber = req.body.flightNumber;
     airline = req.body.airline;
     departs = req.body.departs;
@@ -59,6 +61,8 @@ exports.pushNewScheduleFlights = async (req, res) => {
     departingTo = req.body.departingTo;
 
     if (object_id) {
+      console.log("Updating")
+      console.log(object_id)
       await userModelScheduledFlights.updateOne(
         { _id: object_id },
         {
@@ -110,7 +114,7 @@ exports.pushNewScheduleFlights = async (req, res) => {
       return res.status(200).json("Inserted Successfully");
     }
   } catch (err) {
-    return res.status(500).send("Server error");
+    return res.status(500).send(err);
   }
 };
 
@@ -161,5 +165,19 @@ exports.getFlightScheduleHourly = async (req, res) => {
     return res.json({});
   } catch (err) {
     return res.status(500).send("Server error");
+  }
+};
+
+exports.DeleteScheduleFlights = async (req, res) => {
+  try {
+    id = req.body._id;
+    console.log("Removing Flight")
+    console.log(req.body)
+    if (id) {
+      await userModelScheduledFlights.deleteOne({"_id":id})
+      console.log("Removed Flight")
+    }
+  }catch (err) {
+    return res.status(500).send("Cannot Delete Record");
   }
 };

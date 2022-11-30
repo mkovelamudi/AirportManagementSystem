@@ -20,6 +20,8 @@ router.post("/updateflightScheduleGate",flightScheduleControllers.updateFlightSc
 
 router.post("/flightScheduleHourly", flightScheduleControllers.getFlightScheduleHourly);
 
+router.post("/DeleteScheduleFlights",flightScheduleControllers.DeleteScheduleFlights);
+
 
 //Login Authentication API
 router.post("/login", loginController.logIn);

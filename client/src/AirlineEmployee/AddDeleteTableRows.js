@@ -3,6 +3,7 @@ import TableRows from "./TableRows"
 import "./AirlineEmployee.css";
 import ReadOnlyRow from "./ReadOnlyRow"
 import moment from "moment";
+import axios from "axios";
 
 
 function AddDeleteTableRows(props){
@@ -10,6 +11,8 @@ function AddDeleteTableRows(props){
     const [rowsData, setRowsData] = useState([]);
     const [editFlightIndex, setEditFlightIndex] = useState(null);
     const [cancelEdit, setCancelEdit] = useState(null);
+
+    
 
     const [addFlightData, setAddFlightData] = useState({
         flightNumber:'',
@@ -29,6 +32,36 @@ function AddDeleteTableRows(props){
         setRowsData(props.flights)
       },[]);
    
+      const refreshData=()=>{
+        
+        const auth = JSON.parse(localStorage.getItem("auth"));
+            console.log("refresh auth call Employee")
+            console.log(auth)
+            
+            var email = auth.employees[0].userName.split('@')[1].split(".")[0];
+            var airline = "";
+            switch (email) {
+            case "qatar":
+                airline = "Qatar Airways";
+                break;
+            case "emirates":
+                airline = "Emirates";
+                break;
+            case "airindia":
+                airline = "Air India";
+                break;
+            default:
+                airline = email;
+                break;
+            }
+        axios.post('/all/getairlineflights',{airline: airline}).then((res)=>{
+            console.log("refreshing data from API")
+            console.log(res.data)
+            setRowsData(res.data)
+            
+          
+        });  
+      }
     
     const addTableRows = ()=>{
         const rowsInput={
@@ -45,6 +78,9 @@ function AddDeleteTableRows(props){
         const rows = [...rowsData];
         rows.splice(index, 1);
         setRowsData(rows);
+        axios.post('/all/DeleteScheduleFlights',rowsData[index]).then((res)=>{
+            console.log("Removed Flight")
+            console.log(res.data)})
     }
  
     const handleChange = (index, evnt)=>{
@@ -81,34 +117,56 @@ function AddDeleteTableRows(props){
             departs:moment(editFlightData[index].departs).format("YYYY-MM-DDThh:mm"),
             arrives:moment(editFlightData[index].arrives).format("YYYY-MM-DDThh:mm")
         };
-        console.log("Edited Flight")
-        console.log(editedFlight)
+        // console.log("Edited Flight")
+        // console.log(editedFlight)
         const newFlightData = [...rowsData];
-        console.log("New Flight Data")
-        console.log(newFlightData)
+        // console.log("New Flight Data")
+        // console.log(newFlightData)
         newFlightData[index] = editedFlight;
         console.log("New Flight Data index")
         console.log(newFlightData[index]);
         setRowsData(newFlightData);
-        console.log("Rows Data")
-        console.log(rowsData)
+        const sending = [...rowsData];
+        if(sending[index].hasOwnProperty('_id')){
+            console.log("Updated Flight")
+            axios.post('/all/pushScheduledFlights',sending[index]).then((res)=>{
+                console.log("Updated Flight Data")
+                console.log(res.data)})
+                //setTimeout(refreshData(), 10000);
+
+        }
+        else{
+            sending[index]['id']="";
+            sending[index]['airline']="Emirates"
+            axios.post('/all/pushScheduledFlights',sending[index]).then((res)=>{
+                console.log("Added Flight Data")
+                console.log(res.data)})
+               // refreshData();
+               //setTimeout(refreshData(), 10000);
+               window.location.reload()
+        }
+        
+        // console.log("Rows Data")
+        // console.log(rowsData)
         setEditFlightIndex(null);
-        // setEditFlightData(addFlightData);
+        setEditFlightData(addFlightData);
+
+        
 
     }
 
     const handleEditFlightChange = (index,evnt) =>{
         const name = evnt.target.name
         const value = evnt.target.value;
-        // console.log(name)
-        // console.log(value)
-        // console.log(index)
+        console.log(name)
+        console.log(value)
+        console.log(index)
         const newInput = [...rowsData] 
         newInput[index][name]=value
-        // console.log(newInput)
+        console.log(newInput)
         setEditFlightData(newInput)
-        // console.log
-        // console.log(editFlightData)
+        console.log("After setting")
+        console.log(editFlightData)
         
     }
 
@@ -122,7 +180,15 @@ function AddDeleteTableRows(props){
 
     const handleAddClick = ()=>{
         console.log("Inside ADD");
+        setAddFlightData({
+            flightNumber:'',
+            arrivingFrom:'',
+            departingTo:'',
+            departs:'',
+            arrives:''
+        })
         console.log(addFlightData)
+
         console.log(rowsData)
         setEditFlightData(addFlightData)
         console.log(editFlightData)
@@ -159,7 +225,26 @@ function AddDeleteTableRows(props){
 
                     </thead>
                    <tbody>
-                   { rowsData.map((data,index)=>(
+                   {rowsData &&
+                    rowsData
+                        .filter((x) => {
+                            console.log(props.searchData==null)
+                            
+                        if ((props.searchData && props.searchData.length<=0) || props.searchData == null || props.searchData == "All") {
+                            return x;
+                        } else {
+                            if (
+                            
+                            (x["flightNumber"] &&
+                                x["flightNumber"]
+                                .toLowerCase()
+                                .includes(props.searchData.toLowerCase()))
+                            
+                            )
+                            return x;
+                        }
+                        })
+                    .map((data,index)=>(
                     <Fragment>
                         {editFlightIndex === index ? (<TableRows index={index} 
                         editFlightData={editFlightData} handleEditFlightChange={handleEditFlightChange} 
