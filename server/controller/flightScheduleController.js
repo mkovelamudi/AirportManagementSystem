@@ -91,11 +91,9 @@ exports.pushNewScheduleFlights = async (req, res) => {
         type = "arrival";
         belt = await utilLogic.getGateBelt(arrives, terminal, "belt");
         belt = belt[0];
-        departingTo = "";
       } else if (arrivingFrom == "San Jose") {
         type = "departure";
         belt = "";
-        arrivingFrom = "";
       }
       gate = await utilLogic.getGateBelt(arrives, terminal, "gate");
 
