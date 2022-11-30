@@ -12,6 +12,8 @@ function AddDeleteTableRows(props){
     const [editFlightIndex, setEditFlightIndex] = useState(null);
     const [cancelEdit, setCancelEdit] = useState(null);
 
+    
+
     const [addFlightData, setAddFlightData] = useState({
         flightNumber:'',
         arrivingFrom:'',
@@ -30,6 +32,36 @@ function AddDeleteTableRows(props){
         setRowsData(props.flights)
       },[]);
    
+      const refreshData=()=>{
+        
+        const auth = JSON.parse(localStorage.getItem("auth"));
+            console.log("refresh auth call Employee")
+            console.log(auth)
+            
+            var email = auth.employees[0].userName.split('@')[1].split(".")[0];
+            var airline = "";
+            switch (email) {
+            case "qatar":
+                airline = "Qatar Airways";
+                break;
+            case "emirates":
+                airline = "Emirates";
+                break;
+            case "airindia":
+                airline = "Air India";
+                break;
+            default:
+                airline = email;
+                break;
+            }
+        axios.post('/all/getairlineflights',{airline: airline}).then((res)=>{
+            console.log("refreshing data from API")
+            console.log(res.data)
+            setRowsData(res.data)
+            
+          
+        });  
+      }
     
     const addTableRows = ()=>{
         const rowsInput={
@@ -100,6 +132,8 @@ function AddDeleteTableRows(props){
             axios.post('/all/pushScheduledFlights',sending[index]).then((res)=>{
                 console.log("Updated Flight Data")
                 console.log(res.data)})
+                //setTimeout(refreshData(), 10000);
+
         }
         else{
             sending[index]['id']="";
@@ -107,12 +141,17 @@ function AddDeleteTableRows(props){
             axios.post('/all/pushScheduledFlights',sending[index]).then((res)=>{
                 console.log("Added Flight Data")
                 console.log(res.data)})
+               // refreshData();
+               //setTimeout(refreshData(), 10000);
+               window.location.reload()
         }
         
         // console.log("Rows Data")
         // console.log(rowsData)
         setEditFlightIndex(null);
-        // setEditFlightData(addFlightData);
+        setEditFlightData(addFlightData);
+
+        
 
     }
 
@@ -141,7 +180,15 @@ function AddDeleteTableRows(props){
 
     const handleAddClick = ()=>{
         console.log("Inside ADD");
+        setAddFlightData({
+            flightNumber:'',
+            arrivingFrom:'',
+            departingTo:'',
+            departs:'',
+            arrives:''
+        })
         console.log(addFlightData)
+
         console.log(rowsData)
         setEditFlightData(addFlightData)
         console.log(editFlightData)
@@ -178,7 +225,26 @@ function AddDeleteTableRows(props){
 
                     </thead>
                    <tbody>
-                   { rowsData.map((data,index)=>(
+                   {rowsData &&
+                    rowsData
+                        .filter((x) => {
+                            console.log(props.searchData==null)
+                            
+                        if ((props.searchData && props.searchData.length<=0) || props.searchData == null || props.searchData == "All") {
+                            return x;
+                        } else {
+                            if (
+                            
+                            (x["flightNumber"] &&
+                                x["flightNumber"]
+                                .toLowerCase()
+                                .includes(props.searchData.toLowerCase()))
+                            
+                            )
+                            return x;
+                        }
+                        })
+                    .map((data,index)=>(
                     <Fragment>
                         {editFlightIndex === index ? (<TableRows index={index} 
                         editFlightData={editFlightData} handleEditFlightChange={handleEditFlightChange} 
