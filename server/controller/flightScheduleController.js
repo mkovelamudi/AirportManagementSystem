@@ -60,6 +60,8 @@ exports.pushNewScheduleFlights = async (req, res) => {
     arrivingFrom = req.body.arrivingFrom;
     departingTo = req.body.departingTo;
 
+    console.log(arrives+"arrivals ------ departs "+departs)
+
     if (object_id) {
       console.log("Updating")
       console.log(object_id)

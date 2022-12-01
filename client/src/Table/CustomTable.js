@@ -209,11 +209,12 @@ function CustomeTable(props) {
                             )}
                           </td>
                         );
-                      } else if (key == "Arrives") {
+                      } 
+                      else if (key == "Arrives") {
                         return (
                           <td>
                             {moment(x[props.tableNames[key]]).format(
-                              "MMMM Do YYYY"
+                              "LLL"
                             )}
                           </td>
                         );
@@ -221,11 +222,12 @@ function CustomeTable(props) {
                         return (
                           <td>
                             {moment(x[props.tableNames[key]]).format(
-                              "MMMM Do YYYY"
+                             "LLL"
                             )}
                           </td>
                         );
-                      } else return <td>{x[props.tableNames[key]]}</td>;
+                      } 
+                      else return <td>{x[props.tableNames[key]]}</td>;
                     })}
                   </tr>
                 );
