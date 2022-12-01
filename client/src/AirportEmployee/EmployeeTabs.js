@@ -219,7 +219,7 @@ export default function EmployeeTabs() {
             >
               <div></div>
               <div class="_airlineFilter_6uyzw_146">
-                <div class="_selectColumnFilter_6uyzw_57">
+                {/* <div class="_selectColumnFilter_6uyzw_57">
                   <label
                     for="airline.airline_name"
                     class="_filterLabel_6uyzw_46"
@@ -237,7 +237,7 @@ export default function EmployeeTabs() {
                       <option value="Aer Lingus">Aer Lingus</option>
                     </select>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </form>
