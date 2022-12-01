@@ -35,14 +35,27 @@ exports.updateGateState = async (req, res) => {
       terminal: resTerminal,
       gate: resGate,
     });
-
+    var avaialbleGates;
+    console.log(scheduleData.type)
     if (scheduleData) {
-      const avaialbleGates = await utilLogic.getGateBelt(
-        scheduleData.departs,
-        scheduleData.terminal,
-        "gate"
-      );
-      await userModelScheduledFlights.update(
+      if(scheduleData.type == 'arrival'){
+        avaialbleGates = await utilLogic.getGateBelt(
+          scheduleData.arrives,
+          scheduleData.terminal,
+          "gate"
+        );
+      console.log(avaialbleGates)
+      }
+      else{
+        avaialbleGates = await utilLogic.getGateBelt(
+          scheduleData.departs,
+          scheduleData.terminal,
+          "gate"
+        );
+      }
+      
+      console.log(avaialbleGates)
+      await userModelScheduledFlights.updateOne(
         {
           terminal: resTerminal,
           gate: resGate,

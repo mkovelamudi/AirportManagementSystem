@@ -97,8 +97,9 @@ exports.pushNewScheduleFlights = async (req, res) => {
         type = "departure";
         belt = "";
       }
+      console.log('11111', arrives, terminal)
       gate = await utilLogic.getGateBelt(arrives, terminal, "gate");
-
+      console.log(gate)
       const dataScheduleFlights = new userModelScheduledFlights({
         type: type,
         flightNumber: flightNumber,
