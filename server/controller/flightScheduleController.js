@@ -178,6 +178,7 @@ exports.DeleteScheduleFlights = async (req, res) => {
     if (id) {
       await userModelScheduledFlights.deleteOne({"_id":id})
       console.log("Removed Flight")
+      return res.status(200).json("Removed Successfully");
     }
   }catch (err) {
     return res.status(500).send("Cannot Delete Record");
