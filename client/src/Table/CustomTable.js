@@ -82,9 +82,10 @@ function CustomeTable(props) {
     var time = x.arrives;
     var terminal = x.terminal;
     var Type = "belt";
+    var modifiedT=time.split("T")[0]+" "+time.split("T")[1].split(".")[0];
     axios
       .post("/all/availableGatesBelts", {
-        date: time,
+        date: modifiedT,
         terminal: terminal,
         type: Type,
       })
@@ -213,17 +214,14 @@ function CustomeTable(props) {
                       else if (key == "Arrives") {
                         return (
                           <td>
-                            {moment(x[props.tableNames[key]]).format(
-                              "LLL"
-                            )}
+                            {x[props.tableNames[key]].split("T")[0]+" "+x[props.tableNames[key]].split("T")[1].split(".")[0]}
+                            
                           </td>
                         );
                       } else if (key == "Departs") {
                         return (
                           <td>
-                            {moment(x[props.tableNames[key]]).format(
-                             "LLL"
-                            )}
+                             {x[props.tableNames[key]].split("T")[0]+" "+x[props.tableNames[key]].split("T")[1].split(".")[0]}
                           </td>
                         );
                       } 
