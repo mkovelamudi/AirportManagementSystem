@@ -30,6 +30,7 @@ function AddDeleteTableRows(props){
     })
     useEffect(() => {
         setRowsData(props.flights)
+        
       },[]);
    
       const refreshData=()=>{
@@ -105,6 +106,28 @@ function AddDeleteTableRows(props){
     }
 
     const handleSaveClick = (index, evnt) =>{
+
+        const auth = JSON.parse(localStorage.getItem("auth"));
+            console.log("refresh auth call Employee")
+            console.log(auth)
+            
+            var email = auth.employees[0].userName.split('@')[1].split(".")[0];
+            var airline = "";
+            switch (email) {
+            case "qatar":
+                airline = "Qatar Airways";
+                break;
+            case "emirates":
+                airline = "Emirates";
+                break;
+            case "airindia":
+                airline = "Air India";
+                break;
+            default:
+                airline = email;
+                break;
+            }
+
         console.log("CLicked Save")
         console.log(editFlightData);
         // setRowsData(editFlightData);
@@ -137,13 +160,13 @@ function AddDeleteTableRows(props){
         }
         else{
             sending[index]['id']="";
-            sending[index]['airline']="Emirates"
+            sending[index]['airline']=airline
             axios.post('/all/pushScheduledFlights',sending[index]).then((res)=>{
                 console.log("Added Flight Data")
                 console.log(res.data)})
                // refreshData();
                //setTimeout(refreshData(), 10000);
-               window.location.reload()
+            //    window.location.reload()
         }
         
         // console.log("Rows Data")
