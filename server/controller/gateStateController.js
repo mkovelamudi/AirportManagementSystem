@@ -19,50 +19,38 @@ exports.allGateStatus = async (req, res) => {
 };
 
 exports.updateGateState = async (req, res) => {
+  //console.log(1)
   try {
     const object_id = req.body.id;
     const resTerminal = req.body.terminal;
     const resGate = req.body.gate;
     const state = req.body.state;
-    var currentDate = moment(new Date()).format("YYYY-MM-DD");
-
+    
     await userModelGateState.updateOne(
       { _id: object_id },
       { $set: { status: state } }
     );
-
+    
     const scheduleData = await userModelScheduledFlights.findOne({
       terminal: resTerminal,
       gate: resGate,
     });
+    
     var avaialbleGates;
-    console.log(scheduleData.type)
-    if (scheduleData) {
-      if(scheduleData.type == 'arrival'){
-        avaialbleGates = await utilLogic.getGateBelt(
-          scheduleData.arrives,
-          scheduleData.terminal,
-          "gate"
-        );
-      console.log(avaialbleGates)
-      }
-      else{
-        avaialbleGates = await utilLogic.getGateBelt(
-          scheduleData.departs,
-          scheduleData.terminal,
-          "gate"
-        );
-      }
-      
-      console.log(avaialbleGates)
-      await userModelScheduledFlights.updateOne(
-        {
-          terminal: resTerminal,
-          gate: resGate,
-          arrives: { $gte: currentDate },
-        },
-        { $set: { gate: avaialbleGates[0] } }
-      );
+    //console.log(scheduleData)
+    if (scheduleData && state == 'Inactive') {
+        if(scheduleData.type == 'arrival'){
+          const tempDate = moment(scheduleData.arrives).add(8,'hours')
+          //console.log(tempDate, scheduleData.arrives)
+          avaialbleGates = await utilLogic.getGateBelt(tempDate,scheduleData.terminal,"gate");
+        }
+        else if(scheduleData.type == 'departure'){
+          const tempDate = moment(scheduleData.departs).add(8,'hours')
+          avaialbleGates = await utilLogic.getGateBelt(tempDate,scheduleData.terminal,"gate");
+        }
+        //console.log(avaialbleGates, avaialbleGates[0])
+        
+        const temp = await userModelScheduledFlights.updateOne({_id: scheduleData._id},{ $set: { gate: avaialbleGates[0] } });
     }
 
     return res.status(200).send("Updated SuccessFully");

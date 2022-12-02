@@ -81,24 +81,27 @@ exports.pushNewScheduleFlights = async (req, res) => {
 
       return res.status(200).json("Updated Successfully");
     } else {
-      if (airline == "Qatar Airways") {
+      if (airline.toLowerCase() == "qatar airways") {
         terminal = "T1";
-      } else if (airline == "Emirates") {
+      } else if (airline.toLowerCase() == "emirates") {
         terminal = "T2";
-      } else if (airline == "Air India") {
+      } else if (airline.toLowerCase() == "air india") {
         terminal = "T3";
       }
 
-      if (departingTo == "San Jose") {
+      if (departingTo.toLowerCase() == "san jose") {
         type = "arrival";
         belt = await utilLogic.getGateBelt(arrives, terminal, "belt");
         belt = belt[0];
-      } else if (arrivingFrom == "San Jose") {
+        gate = await utilLogic.getGateBelt(arrives, terminal, "gate");
+      } else if (arrivingFrom.toLowerCase() == "san jose") {
         type = "departure";
         belt = "";
+        gate = await utilLogic.getGateBelt(departs, terminal, "gate");
       }
       console.log('11111', arrives, terminal)
-      gate = await utilLogic.getGateBelt(arrives, terminal, "gate");
+      
+
       console.log(gate)
       const dataScheduleFlights = new userModelScheduledFlights({
         type: type,

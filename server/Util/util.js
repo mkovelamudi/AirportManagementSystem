@@ -6,20 +6,48 @@ const moment = require("moment");
 
 exports.getGateBelt = async (resDate, resTerminal, type) => {
   try {
-    console.log(""+resDate+"", ""+moment(new Date(resDate)).format('YYYY-MM-DD HH:MM:SS')+"")
-    var tempDate = ""+resDate+""
-    if(tempDate.includes('Z')){
-      startTime = resDate
-    }
-    else{
-      startTime = moment(resDate).subtract(8,'hours')
-    }
+    console.log(resDate)
+
+   
+    startTime = moment(resDate).subtract(8,'hours')
+    
 
     endTime = moment(startTime).add(1, "hour");
-    console.log( new Date(startTime), new Date(endTime), endTime)
-    const occupiedData = await userModelScheduledFlights.find({arrives: { $gte :new Date(startTime), $lt: new Date(endTime)}, terminal: resTerminal});
+    console.log( new Date(startTime), new Date(endTime))
 
+    
+     
+    var occupiedDataArrives = await userModelScheduledFlights.find({arrives: { $gte :new Date(startTime), $lt: new Date(endTime)}, terminal: resTerminal});
+    
+    var occupiedDataDeparts = await userModelScheduledFlights.find({departs: { $gte :new Date(startTime), $lte: new Date(endTime)}, terminal: resTerminal});
+    
+    var occupiedData = occupiedDataDeparts.concat(occupiedDataArrives)
+    
     //console.log(occupiedData)
+    
+    const allData = await userModelScheduledFlights.find()
+    
+
+    for(let i=0; i< allData.length; i++){
+      tempStart = allData[i].arrives
+      tempEnd = moment(tempStart).add(1,'hour')
+      startTime = new Date(startTime)
+      if(startTime <= tempEnd && startTime >= tempStart && allData[i].type == 'arrival'){
+        occupiedData.push(allData[i])
+      }
+    }
+
+    for(let i=0; i< allData.length; i++){
+      tempStart = allData[i].departs
+      tempEnd = moment(tempStart).add(1,'hour')
+      startTime = new Date(startTime)
+      if(startTime <= tempEnd && startTime >= tempStart && allData[i].type == 'departure'){
+        occupiedData.push(allData[i])
+      }
+    }
+
+    console.log(occupiedData.length)
+    //console.log(occupiedData.length)
     const terminalData = await userModelTerminal.find({
       terminal: resTerminal,
     });
@@ -45,6 +73,7 @@ exports.getGateBelt = async (resDate, resTerminal, type) => {
     }
     return diff;
   } catch (err) {
+    console.log(err)
     return "server error";
   }
 };
