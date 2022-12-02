@@ -98,8 +98,11 @@ function AddDeleteTableRows(props){
             flightNumber:data.flightNumber,
             arrivingFrom:data.arrivingFrom,
             departingTo:data.departingTo,
-            departs:moment(data.departs).format("YYYY-MM-DDThh:mm"),
-            arrives:moment(data.arrives).format("YYYY-MM-DDThh:mm")
+            departs:data.departs,
+            arrives:data.arrives
+            // departs:String(data.departs).split(".")[0],
+            // arrives:String(data.arrives).split(".")[0]
+       
         }
         setEditFlightData(initialValues)
         setCancelEdit(initialValues)
@@ -137,8 +140,10 @@ function AddDeleteTableRows(props){
             flightNumber:editFlightData[index].flightNumber,
             arrivingFrom:editFlightData[index].arrivingFrom,
             departingTo:editFlightData[index].departingTo,
-            departs:moment(editFlightData[index].departs).format("YYYY-MM-DDThh:mm"),
-            arrives:moment(editFlightData[index].arrives).format("YYYY-MM-DDThh:mm")
+            departs:editFlightData[index].departs,
+            arrives:editFlightData[index].arrives
+            // departs:moment(editFlightData[index].departs).format("YYYY-MM-DDThh:mm"),
+            // arrives:moment(editFlightData[index].arrives).format("YYYY-MM-DDThh:mm")
         };
         // console.log("Edited Flight")
         // console.log(editedFlight)
@@ -156,6 +161,7 @@ function AddDeleteTableRows(props){
                 console.log("Updated Flight Data")
                 console.log(res.data)})
                 //setTimeout(refreshData(), 10000);
+                //window.location.reload()
 
         }
         else{
@@ -166,7 +172,7 @@ function AddDeleteTableRows(props){
                 console.log(res.data)})
                // refreshData();
                //setTimeout(refreshData(), 10000);
-            //    window.location.reload()
+            //window.location.reload()
         }
         
         // console.log("Rows Data")
@@ -226,9 +232,15 @@ function AddDeleteTableRows(props){
     }
 
     const handleCancelClick = () => {
-        setEditFlightIndex(null);
+        console.log(cancelEdit)
         setEditFlightData(cancelEdit)
+        setEditFlightIndex(null);
+    
         setCancelEdit(null)
+
+        window.location.reload()
+
+        
     };
 
     return(

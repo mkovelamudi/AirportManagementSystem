@@ -6,11 +6,18 @@ function Nav(props) {
     console.log(name);
   };
 
+
   return (
     <div className="container-fluid">
       <nav class="navbar navbar-expand-lg navbar-light bg-light navBackground">
-        <a class="navbar-brand" href="#" style={{ color: "white" }}>
-          SFJC Airport
+        <a class="navbar-brand" href="#" style={{ color: "white" }} >
+        <Link
+                    
+                    class="nav-link"
+                    to={ JSON.parse(localStorage.getItem("auth")) && JSON.parse(localStorage.getItem("auth")).employees[0].userRole=="airline"? "/AirlineEmp":JSON.parse(localStorage.getItem("auth")) && JSON.parse(localStorage.getItem("auth")).employees[0].userRole=="airport" ? "/AirportEmp" :""}
+                    style={{ color: "white" }}
+                  >SFJC Airport
+        </Link>
         </a>
         <button
           class="navbar-toggler"
