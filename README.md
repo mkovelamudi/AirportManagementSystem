@@ -23,6 +23,7 @@ Saturdays
 
 ## Scrum Journal - [here](https://github.com/gopinathsjsu/team-project-team-mavericks/blob/main/Documentation/Scrum_Journal_202%20(1).xlsx)
 
+## Individual Journels - [here](https://github.com/gopinathsjsu/team-project-team-mavericks/tree/main/Documentation/Journals)
 ## XP Core Values:
 * Communication
 * Simplicity
