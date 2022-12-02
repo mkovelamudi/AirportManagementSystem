@@ -20,6 +20,9 @@ Saturdays
 ## Sprint sheet xl file can be found [here](https://docs.google.com/spreadsheets/d/15IUPsQADr-2O5elAtdGqjzlG8GLBCtYsMDQKOzU0jqw/edit?usp=sharing)
 ## Project Board
 [Available here](https://github.com/orgs/gopinathsjsu/projects/29/views/3)
+
+## Scrum Journal - [here](https://github.com/gopinathsjsu/team-project-team-mavericks/blob/main/Documentation/Scrum_Journal_202%20(1).xlsx)
+
 ## XP Core Values:
 * Communication
 * Simplicity
