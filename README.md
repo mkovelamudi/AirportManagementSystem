@@ -15,6 +15,94 @@
 * REST API: Postman (for testing developed APIs)
 * Cloud: Amazon Web Services (AWS) EC2 Cluster
 
+
+## XP Core Values:
+* Communication
+* Simplicity
+
+## Summary of contributions:
+
+### 1.Vamshidhar Reddy Parupally:
+- Designed the wire frames for the application and decided on the front end technologies and layout for the application
+- Involved in development of the application components which include
+  - Home page component
+    - Search component
+    - Redirectional handling for component to component communication
+  - Airport Employee component
+  - Login
+    - Validated the user details and created the local session to store the details
+  - Baggage handling
+    - Designed to allocate and modify the baggage belt allocation to a particular incoming flight
+  - Gate management
+  - Handled the gate assignment and modification in the UI for airport employee
+ - Profile
+		Worked on API integration with the application and structuring NodeJS.
+Involved in the overall design and cosmetic essence of the application as well as with the development of the core functionality.
+
+
+
+
+
+
+### 2.Manish Kovelamudi:
+- Created architecture, component and deployment diagrams for the project.
+- Involved in development of the application components including:
+- Airline Employee
+- Login
+- Dashboard
+- Inserting New Flights
+- Modify or delete existing Flight Data
+- Backend API
+- Created an API to Fetch airline specific flights.
+- Created an API to delete existing flight
+
+
+
+### 3. Anurag Gajam:
+- Designed the back end technologies and its design
+- Involved in setting up the server with MongoDB
+- Involved in development of the application components including:
+- Backend API
+  - Created an API to validate the login credentials of the user
+  - Created an API to fetch specific date arrival and departure flights
+  - Created an API to fetch current date arrival and departure flights
+  - Created an API to update specific arrival or departure flight
+  - Created an API to get all the Gate Status information
+  - Created an API to update a Gate Status
+  - Created an API to get the available Gates and Belts for the specific time period
+  - Created an API to allocate dynamically available Gate to the flight
+  - Created ScheduledFlight, loginSchema, OccupiedGatesBelts schema’s
+ 
+		
+
+### 4. Ananya Mandava:
+- Designed wireframes - Homepage, flights tab, flight schedules and flight status pages.
+- Involved in development of the application components including:
+- Users component
+  - Flight schedules 
+  - Flight status 
+- Backend API
+  - Created an API to allocate belt dynamically to the arrival flights.
+  - Created an API to fetch next 2,4,8 hours flights information
+  - Created an API to push arrival and departure flight information
+  - Created gateState and terminalsGate schema’s
+
+
+### Link to team's GitHub Repo
+https://github.com/gopinathsjsu/team-project-team-mavericks
+
+### Link to team's Project Board (on GitHub)
+https://github.com/orgs/gopinathsjsu/projects/29/views/3
+
+### Link to team's Project Journal (on GitHub)
+https://github.com/gopinathsjsu/team-project-team-mavericks/tree/main/Documentation/Journals
+
+https://github.com/gopinathsjsu/team-project-team-mavericks/blob/main/Documentation/Scrum_Journal_202%20(1).xlsx
+
+
+### Link to team's Google Sprint Task Sheet
+https://docs.google.com/spreadsheets/d/15IUPsQADr-2O5elAtdGqjzlG8GLBCtYsMDQKOzU0jqw/edit#gid=1080363626
+
 ## Schedule for Scrum Meetings:
 Saturdays
 ## Sprint sheet xl file can be found [here](https://docs.google.com/spreadsheets/d/15IUPsQADr-2O5elAtdGqjzlG8GLBCtYsMDQKOzU0jqw/edit?usp=sharing)
@@ -24,9 +112,6 @@ Saturdays
 ## Scrum Journal - [here](https://github.com/gopinathsjsu/team-project-team-mavericks/blob/main/Documentation/Scrum_Journal_202%20(1).xlsx)
 
 ## Individual Journels - [here](https://github.com/gopinathsjsu/team-project-team-mavericks/tree/main/Documentation/Journals)
-## XP Core Values:
-* Communication
-* Simplicity
 
 ## Architecture Diagram
 ![202_architecture](https://github.com/gopinathsjsu/team-project-team-mavericks/blob/main/Documentation/Wireframes/202Archit.png)
