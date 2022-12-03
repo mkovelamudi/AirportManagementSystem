@@ -6,11 +6,11 @@
 
 ### 1. What tasks did I work on?
 
-Discuss about Project overview, Allocation of tasks and sprints, decide on the backend technologies and its architecture for each of the possible case in the application.
+Discuss about Project overview, Allocation of tasks and sprints, decide on the backend technologies and its architecture for each possible case in the application.
 
 ### 2. What am I planning to work on next?
 
-Explore Node.js to setup the server and connecting to Database.
+Explore Node.js to setup the server and its connection to database.
 
 ### 3. What tasks are blocked waiting on another team member?
 
