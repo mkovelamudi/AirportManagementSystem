@@ -27,4 +27,4 @@ app.listen(3001, () => {
   console.log(`Server listening on 3001`);
 });
 
-app.use('/all', allRoutes)
+app.use('', allRoutes)
