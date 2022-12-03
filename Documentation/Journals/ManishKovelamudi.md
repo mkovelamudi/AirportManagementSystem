@@ -39,4 +39,3 @@ Deploy application on AWS before presentation
 3. What tasks blockers did I have?
 None.
 
-![image](https://user-images.githubusercontent.com/99615170/205426962-5bedfd51-ea22-478c-8a65-62f10d1f351e.png)
