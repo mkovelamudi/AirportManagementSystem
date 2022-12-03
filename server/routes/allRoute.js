@@ -12,34 +12,38 @@ const gateStateController = require("../controller/gateStateController");
 
 //Flight Schedule API (GETDetails, Push and Update, Get Hourly Based)
 
-router.post("/flightScheduleDetails",flightScheduleControllers.getFlightSchedule);
+router.get("/", function(req,res){
+    return res.status(200).json("Successfully Loaded");
+});
 
-router.post("/pushScheduledFlights",flightScheduleControllers.pushNewScheduleFlights);
+router.post("/all/flightScheduleDetails",flightScheduleControllers.getFlightSchedule);
 
-router.post("/updateflightScheduleGate",flightScheduleControllers.updateFlightSchedule);
+router.post("/all/pushScheduledFlights",flightScheduleControllers.pushNewScheduleFlights);
 
-router.post("/flightScheduleHourly", flightScheduleControllers.getFlightScheduleHourly);
+router.post("/all/updateflightScheduleGate",flightScheduleControllers.updateFlightSchedule);
 
-router.post("/DeleteScheduleFlights",flightScheduleControllers.DeleteScheduleFlights);
+router.post("/all/flightScheduleHourly", flightScheduleControllers.getFlightScheduleHourly);
+
+router.post("/all/DeleteScheduleFlights",flightScheduleControllers.DeleteScheduleFlights);
 
 
 //Login Authentication API
-router.post("/login", loginController.logIn);
+router.post("/all/login", loginController.logIn);
 
 
 //Get Available Gates and Belts API
-router.post("/availableGatesBelts", availableGates.getAvailableGatesBelts);
+router.post("/all/availableGatesBelts", availableGates.getAvailableGatesBelts);
 
 
-router.post("/getairlineflights", flightScheduleControllers.getAirlineFlights)
+router.post("/all/getairlineflights", flightScheduleControllers.getAirlineFlights)
 
-router.get("/allGateStatus", gateStateController.allGateStatus);
+router.get("/all/allGateStatus", gateStateController.allGateStatus);
 
-router.post("/updateGatestate", gateStateController.updateGateState);
+router.post("/all/updateGatestate", gateStateController.updateGateState);
 
 
 
-router.post("/postData", availableGates.pushData);
+router.post("/all/postData", availableGates.pushData);
 
 
 module.exports = router;
